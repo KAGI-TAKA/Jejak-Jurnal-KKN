@@ -1,0 +1,194 @@
+/* ============================================================
+   PROLOG.CSS — Prolog / Pembuka Section
+   KKN Digital Journal "JEJAK"
+   ============================================================ */
+
+/* ── PROLOG SECTION ───────────────────────────────────────── */
+.prolog {
+  background-color: var(--bg-primary);
+  padding: var(--space-40) 0 var(--space-32);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dekorasi garis vertikal kiri */
+.prolog::before {
+  content: '';
+  position: absolute;
+  top:   80px;
+  bottom: 80px;
+  left:  var(--px-desktop);
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border-light) 20%,
+    var(--border-light) 80%,
+    transparent
+  );
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .prolog::before { display: block; }
+}
+
+/* ── PROLOG INNER ─────────────────────────────────────────── */
+.prolog__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--px-mobile);
+}
+
+@media (min-width: 768px) {
+  .prolog__inner { padding: 0 var(--px-tablet); }
+}
+
+@media (min-width: 1280px) {
+  .prolog__inner { padding: 0 var(--px-desktop); }
+}
+
+/* ── OPENING QUOTE — "ink reveal" ────────────────────────── */
+.prolog__opening {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-12);
+  position: relative;
+
+  /* Ink reveal: teks muncul dari kiri ke kanan */
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1000ms var(--ease-out);
+}
+
+.prolog__opening.is-visible {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* ── CHAPTER DIVIDER ──────────────────────────────────────── */
+.prolog__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.prolog__divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent-sage), transparent);
+}
+
+.prolog__divider-icon {
+  font-size: var(--text-lg);
+  color: var(--accent-sage);
+  user-select: none;
+}
+
+/* ── VILLAGE TAG ──────────────────────────────────────────── */
+.prolog__village-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.village-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-sage-muted);
+  background-color: rgba(107, 143, 113, 0.10);
+  border: 1px solid rgba(107, 143, 113, 0.25);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4);
+  transition: background-color var(--duration-normal) var(--ease-out),
+              border-color     var(--duration-normal) var(--ease-out);
+}
+
+.village-tag:hover {
+  background-color: rgba(107, 143, 113, 0.18);
+  border-color: rgba(107, 143, 113, 0.45);
+}
+
+.village-tag svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ── PROLOG BODY TEXT ─────────────────────────────────────── */
+.prolog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.prolog__paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-md), 2vw, var(--text-xl));
+  line-height: var(--leading-loose);
+  color: var(--text-secondary);
+}
+
+/* Paragraf pertama sedikit lebih besar */
+.prolog__paragraph:first-child {
+  font-size: clamp(var(--text-lg), 2.2vw, var(--text-2xl));
+  color: var(--text-primary);
+}
+
+/* Highlight kata tertentu */
+.prolog__highlight {
+  color: var(--accent-sage-muted);
+  font-style: italic;
+}
+
+/* ── PROLOG STATS — fakta singkat desa ───────────────────── */
+.prolog__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+  padding-top: var(--space-10);
+  border-top: 1px solid var(--border-light);
+}
+
+@media (min-width: 640px) {
+  .prolog__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.prolog__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.prolog__stat-number {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.prolog__stat-number span {
+  font-size: var(--text-xl);
+  color: var(--accent-sage);
+}
+
+.prolog__stat-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}

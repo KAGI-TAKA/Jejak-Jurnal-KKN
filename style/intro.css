@@ -1,0 +1,19 @@
+/* ============================================================
+   INTRO.CSS — Intro Screen Animation Helpers
+   (sudah include di hero.css, ini untuk override tambahan)
+   ============================================================ */
+
+/* Kata-per-kata reveal untuk quote intro */
+.word-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity   500ms var(--ease-out),
+    transform 500ms var(--ease-out);
+}
+
+.word-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,520 @@
+/* ============================================================
+   TEAM.CSS — Section Tim Kami
+   Style: Expanding Panel / Game Character Select
+   KKN Digital Journal "JEJAK"
+   ============================================================ */
+
+/* ── SECTION WRAPPER ──────────────────────────────────────── */
+.team {
+  background-color: #0F0D0B;
+  padding: var(--space-32) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial gradient bg */
+.team::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(107,143,113,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── TEAM HEADER ──────────────────────────────────────────── */
+.team__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--px-mobile);
+}
+
+.team__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+  font-weight: 700;
+  color: var(--text-on-dark);
+  margin-bottom: var(--space-3);
+  line-height: var(--leading-tight);
+}
+
+.team__subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  color: rgba(245, 240, 232, 0.40);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── EXPANDING PANELS CONTAINER ───────────────────────────── */
+.team__panels {
+  display: flex;
+  align-items: stretch;
+  height: 540px;
+  padding: 0 var(--space-6);
+  gap: 6px;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+
+  /* Saat tidak ada yang di-hover, semua sama rata */
+}
+
+@media (min-width: 768px) {
+  .team__panels {
+    height: 580px;
+    padding: 0 var(--space-10);
+  }
+}
+
+@media (min-width: 1280px) {
+  .team__panels {
+    height: 620px;
+    padding: 0 var(--space-16);
+  }
+}
+
+/* ── SINGLE PANEL / KARTU ─────────────────────────────────── */
+.team-panel {
+  position: relative;
+  flex: 1;                      /* default: semua rata */
+  min-width: 52px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    flex       500ms cubic-bezier(0.4, 0, 0.2, 1),
+    min-width  500ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+/* Saat container di-hover, semua panel kecuali yang aktif mengecil */
+.team__panels:hover .team-panel {
+  flex: 0.3;
+}
+
+/* Panel yang aktif (di-hover) membesar */
+.team__panels:hover .team-panel:hover,
+.team-panel.is-active {
+  flex: 4.5;
+}
+
+/* Focus visible */
+.team-panel:focus-visible {
+  outline: 2px solid var(--accent-sage);
+  outline-offset: 3px;
+}
+
+/* ── PANEL BACKGROUND IMAGE ───────────────────────────────── */
+.team-panel__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition:
+    filter    500ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Default: desaturated + gelap */
+  filter: grayscale(85%) brightness(0.45) contrast(1.1);
+  transform: scale(1.05);
+}
+
+/* Active state: berwarna penuh */
+.team__panels:hover .team-panel:hover .team-panel__bg,
+.team-panel.is-active .team-panel__bg {
+  filter: grayscale(0%) brightness(0.75) contrast(1.05) saturate(0.92);
+  transform: scale(1.0);
+}
+
+/* Non-hovered jadi lebih gelap */
+.team__panels:hover .team-panel:not(:hover):not(.is-active) .team-panel__bg {
+  filter: grayscale(100%) brightness(0.25) contrast(1.1);
+}
+
+/* ── PANEL PLACEHOLDER (belum ada foto) ───────────────────── */
+.team-panel__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    160deg,
+    #2A2420 0%,
+    #1A1612 60%,
+    #0F0D0B 100%
+  );
+  transition: background 500ms ease;
+}
+
+/* Active placeholder */
+.team__panels:hover .team-panel:hover .team-panel__placeholder,
+.team-panel.is-active .team-panel__placeholder {
+  background: linear-gradient(
+    160deg,
+    #3A302A 0%,
+    #2A221C 60%,
+    #1A1612 100%
+  );
+}
+
+/* Inisial di tengah placeholder */
+.team-panel__initials {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-6xl));
+  font-weight: 700;
+  color: rgba(245, 240, 232, 0.08);
+  user-select: none;
+  transition:
+    font-size 500ms ease,
+    color     300ms ease;
+  white-space: nowrap;
+}
+
+.team__panels:hover .team-panel:hover .team-panel__initials,
+.team-panel.is-active .team-panel__initials {
+  color: rgba(245, 240, 232, 0.12);
+}
+
+/* ── GRADIENT OVERLAY ─────────────────────────────────────── */
+.team-panel__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: background 500ms ease;
+
+  /* Default overlay */
+  background: linear-gradient(
+    to bottom,
+    transparent 30%,
+    rgba(10, 8, 6, 0.6) 70%,
+    rgba(10, 8, 6, 0.92) 100%
+  );
+}
+
+/* Active: lebih dramatis */
+.team__panels:hover .team-panel:hover .team-panel__overlay,
+.team-panel.is-active .team-panel__overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 25%,
+    rgba(10, 8, 6, 0.3) 55%,
+    rgba(10, 8, 6, 0.90) 100%
+  );
+}
+
+/* ── NOMOR URUT (selalu terlihat) ─────────────────────────── */
+.team-panel__number {
+  position: absolute;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  color: rgba(245, 240, 232, 0.25);
+  white-space: nowrap;
+  transition: color 300ms ease, opacity 300ms ease;
+}
+
+/* Saat panel mengecil: nomor tetap terlihat */
+.team__panels:hover .team-panel:not(:hover):not(.is-active) .team-panel__number {
+  color: rgba(245, 240, 232, 0.15);
+}
+
+/* Saat panel aktif: nomor sedikit lebih visible */
+.team__panels:hover .team-panel:hover .team-panel__number,
+.team-panel.is-active .team-panel__number {
+  color: rgba(245, 240, 232, 0.40);
+}
+
+/* ── GARIS SISI KIRI — indikator visual saat collapsed ───── */
+.team-panel__side-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  width: 1px;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(107, 143, 113, 0.4),
+    transparent
+  );
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+/* Sembunyikan saat panel aktif */
+.team__panels:hover .team-panel:hover .team-panel__side-line,
+.team-panel.is-active .team-panel__side-line {
+  opacity: 0;
+}
+
+/* ── PANEL CONTENT ────────────────────────────────────────── */
+.team-panel__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: var(--space-6);
+
+  /* Default: tersembunyi */
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity   350ms ease 0ms,
+    transform 350ms ease 0ms;
+}
+
+/* Visible saat panel aktif */
+.team__panels:hover .team-panel:hover .team-panel__content,
+.team-panel.is-active .team-panel__content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition:
+    opacity   350ms ease 120ms,
+    transform 350ms ease 120ms;
+}
+
+/* ── ROLE BADGE ───────────────────────────────────────────── */
+.team-panel__role {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent-sage-light);
+  background-color: rgba(107, 143, 113, 0.15);
+  border: 1px solid rgba(107, 143, 113, 0.30);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  margin-bottom: var(--space-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ── NAME ─────────────────────────────────────────────────── */
+.team-panel__name {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  font-weight: 700;
+  color: var(--text-on-dark);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── ORIGIN ───────────────────────────────────────────────── */
+.team-panel__origin {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: rgba(245, 240, 232, 0.50);
+  margin-bottom: var(--space-4);
+  white-space: nowrap;
+}
+
+.team-panel__origin svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  color: var(--accent-sage-light);
+}
+
+/* ── SEPARATOR ────────────────────────────────────────────── */
+.team-panel__sep {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent-sage), transparent);
+  margin-bottom: var(--space-4);
+  opacity: 0.7;
+}
+
+/* ── QUOTE ────────────────────────────────────────────────── */
+.team-panel__quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-sm), 1.4vw, var(--text-base));
+  color: rgba(245, 240, 232, 0.70);
+  line-height: var(--leading-relaxed);
+
+  /* Clamp agar tidak meluber */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── ACCENT BORDER KIRI saat aktif ───────────────────────── */
+.team-panel::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-sage),
+    transparent
+  );
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity 400ms ease 100ms;
+  z-index: 4;
+}
+
+.team__panels:hover .team-panel:hover::after,
+.team-panel.is-active::after {
+  opacity: 1;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+.team__footer-note {
+  text-align: center;
+  margin-top: var(--space-10);
+  padding: 0 var(--px-mobile);
+  position: relative;
+  z-index: 1;
+}
+
+.team__footer-note p {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+  color: rgba(245, 240, 232, 0.28);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── HINT SCROLL (mobile) ─────────────────────────────────── */
+.team__scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: rgba(245, 240, 232, 0.25);
+  text-transform: uppercase;
+}
+
+.team__scroll-hint svg {
+  width: 14px;
+  height: 14px;
+  animation: nudgeRight 1.8s ease-in-out infinite;
+}
+
+@keyframes nudgeRight {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(4px); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE — Horizontal scroll carousel
+   (panel melebar tidak cocok di layar kecil)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .team__panels {
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0 var(--px-mobile);
+    gap: var(--space-3);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    /* Reset flex behavior — fixed size di mobile */
+  }
+
+  .team__panels::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Panel fixed width di mobile */
+  .team-panel {
+    flex: none !important;
+    min-width: 200px !important;
+    width: 200px;
+    height: 300px;
+    scroll-snap-align: start;
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  /* Tidak ada expanding di mobile — semua kartu terlihat penuh */
+  .team__panels:hover .team-panel {
+    flex: none !important;
+  }
+
+  /* Content selalu terlihat di mobile */
+  .team-panel__content {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .team-panel__side-line {
+    display: none;
+  }
+
+  /* Tap effect */
+  .team-panel:active {
+    transform: scale(0.97);
+  }
+
+  .team-panel__bg {
+    filter: grayscale(30%) brightness(0.65) contrast(1.05) !important;
+  }
+
+  .team__panels:hover .team-panel:not(:hover):not(.is-active) .team-panel__bg {
+    filter: grayscale(30%) brightness(0.65) contrast(1.05) !important;
+  }
+
+  .team-panel::after {
+    opacity: 1 !important;
+  }
+
+  .team-panel__initials {
+    font-size: var(--text-5xl);
+  }
+
+  .team__scroll-hint {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .team__scroll-hint {
+    display: none;
+  }
+}

@@ -1,0 +1,354 @@
+/* ============================================================
+   NAV.CSS — Floating Navigation Bar
+   KKN Digital Journal "JEJAK"
+   ============================================================ */
+
+/* ── NAVIGATION WRAPPER ───────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+
+  /* Hidden by default — muncul setelah scroll 100vh */
+  transform: translateY(-100%);
+  opacity: 0;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    opacity   var(--duration-slow) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out);
+
+  /* Glassmorphism */
+  background-color: rgba(245, 240, 232, 0.72);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(214, 207, 189, 0.5);
+}
+
+/* State: visible */
+.nav.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* State: hidden (saat scroll cepat ke bawah) */
+.nav.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* State: dark (saat berada di section gelap) */
+.nav.is-dark {
+  background-color: rgba(26, 22, 18, 0.80);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ── NAV INNER ────────────────────────────────────────────── */
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--px-mobile);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .nav__inner {
+    padding: var(--space-4) var(--px-tablet);
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav__inner {
+    padding: var(--space-4) var(--px-desktop);
+  }
+}
+
+/* ── LOGO / WORDMARK ──────────────────────────────────────── */
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-tight);
+  transition: color var(--duration-normal) var(--ease-out),
+              opacity var(--duration-normal) var(--ease-out);
+  text-decoration: none;
+}
+
+.nav__logo:hover {
+  opacity: 0.7;
+}
+
+.nav.is-dark .nav__logo {
+  color: var(--text-on-dark);
+}
+
+/* Logo dot — titik hijau kecil setelah nama */
+.nav__logo::after {
+  content: '.';
+  color: var(--accent-sage);
+}
+
+/* ── NAV LINKS (desktop) ──────────────────────────────────── */
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .nav__links {
+    display: flex;
+  }
+}
+
+.nav__link {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: var(--tracking-wide);
+  text-transform: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+/* Underline tumbuh dari tengah */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 1px;
+  background-color: var(--accent-sage);
+  transition:
+    left  var(--duration-normal) var(--ease-out),
+    right var(--duration-normal) var(--ease-out);
+}
+
+.nav__link:hover {
+  color: var(--text-primary);
+}
+
+.nav__link:hover::after {
+  left: 0;
+  right: 0;
+}
+
+.nav.is-dark .nav__link {
+  color: var(--text-on-dark-subtle);
+}
+
+.nav.is-dark .nav__link:hover {
+  color: var(--text-on-dark);
+}
+
+/* Active link */
+.nav__link.is-active {
+  color: var(--accent-sage);
+}
+
+.nav__link.is-active::after {
+  left: 0;
+  right: 0;
+  background-color: var(--accent-sage);
+}
+
+/* ── BACK TO TOP BUTTON ───────────────────────────────────── */
+.nav__back-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color     var(--duration-normal) var(--ease-out),
+    color            var(--duration-normal) var(--ease-out),
+    transform        var(--duration-normal) var(--ease-out);
+}
+
+.nav__back-top:hover {
+  background-color: var(--accent-sage);
+  border-color: var(--accent-sage);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nav.is-dark .nav__back-top {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-on-dark-subtle);
+}
+
+.nav.is-dark .nav__back-top:hover {
+  background-color: var(--accent-sage);
+  border-color: var(--accent-sage);
+  color: white;
+}
+
+/* ── HAMBURGER (mobile) ───────────────────────────────────── */
+.nav__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--space-2);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .nav__hamburger {
+    display: none;
+  }
+}
+
+.nav__hamburger-line {
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    opacity   var(--duration-normal) var(--ease-out);
+}
+
+.nav.is-dark .nav__hamburger-line {
+  background-color: var(--text-on-dark);
+}
+
+/* Hamburger open state */
+.nav__hamburger.is-open .nav__hamburger-line:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav__hamburger.is-open .nav__hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav__hamburger.is-open .nav__hamburger-line:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── MOBILE MENU DRAWER ───────────────────────────────────── */
+.nav__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-primary);
+  z-index: calc(var(--z-nav) - 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+
+  /* Hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition:
+    opacity   var(--duration-slow) var(--ease-out),
+    transform var(--duration-slow) var(--ease-out);
+}
+
+.nav__mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav__mobile-link {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 400;
+  color: var(--text-primary);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.nav__mobile-link:hover {
+  color: var(--accent-sage);
+}
+
+/* ── BOTTOM NAV BAR (mobile only) ────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  z-index: var(--z-nav);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  background-color: rgba(26, 22, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.bottom-nav.is-visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
+.bottom-nav__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  color: rgba(245, 240, 232, 0.5);
+  transition:
+    color            var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out);
+  min-width: 48px;
+}
+
+.bottom-nav__btn:hover,
+.bottom-nav__btn.is-active {
+  color: var(--text-on-dark);
+  background-color: rgba(107, 143, 113, 0.25);
+}
+
+.bottom-nav__btn.is-active .bottom-nav__dot {
+  opacity: 1;
+}
+
+.bottom-nav__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-sage-light);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.bottom-nav__label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+}
