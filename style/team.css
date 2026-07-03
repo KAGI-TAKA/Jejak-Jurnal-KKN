@@ -7,7 +7,7 @@
 /* ── SECTION WRAPPER ──────────────────────────────────────── */
 .team {
   background-color: #0F0D0B;
-  padding: var(--space-32) 0;
+  padding: var(--space-20) 0 var(--space-16);
   position: relative;
   overflow: hidden;
 }
@@ -25,7 +25,7 @@
 /* ── TEAM HEADER ──────────────────────────────────────────── */
 .team__header {
   text-align: center;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
   position: relative;
   z-index: 1;
   padding: 0 var(--px-mobile);
@@ -33,17 +33,17 @@
 
 .team__title {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
   font-weight: 700;
   color: var(--text-on-dark);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   line-height: var(--leading-tight);
 }
 
 .team__subtitle {
   font-family: var(--font-accent);
   font-style: italic;
-  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  font-size: clamp(var(--text-sm), 1.5vw, var(--text-lg));
   color: rgba(245, 240, 232, 0.40);
   line-height: var(--leading-relaxed);
 }
@@ -52,27 +52,25 @@
 .team__panels {
   display: flex;
   align-items: stretch;
-  height: 540px;
+  height: 400px;
   padding: 0 var(--space-6);
-  gap: 6px;
+  gap: 5px;
   max-width: 1600px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
-
-  /* Saat tidak ada yang di-hover, semua sama rata */
 }
 
 @media (min-width: 768px) {
   .team__panels {
-    height: 580px;
+    height: 440px;
     padding: 0 var(--space-10);
   }
 }
 
 @media (min-width: 1280px) {
   .team__panels {
-    height: 620px;
+    height: 480px;
     padding: 0 var(--space-16);
   }
 }
@@ -270,7 +268,7 @@
   left: 0;
   right: 0;
   z-index: 3;
-  padding: var(--space-6);
+  padding: var(--space-4) var(--space-5);
 
   /* Default: tersembunyi */
   opacity: 0;
@@ -315,11 +313,11 @@
 /* ── NAME ─────────────────────────────────────────────────── */
 .team-panel__name {
   font-family: var(--font-display);
-  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  font-size: clamp(var(--text-lg), 1.8vw, var(--text-2xl));
   font-weight: 700;
   color: var(--text-on-dark);
   line-height: var(--leading-tight);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -333,7 +331,7 @@
   font-family: var(--font-ui);
   font-size: var(--text-xs);
   color: rgba(245, 240, 232, 0.50);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
   white-space: nowrap;
 }
 
@@ -346,10 +344,10 @@
 
 /* ── SEPARATOR ────────────────────────────────────────────── */
 .team-panel__sep {
-  width: 32px;
+  width: 24px;
   height: 1px;
   background: linear-gradient(to right, var(--accent-sage), transparent);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-2);
   opacity: 0.7;
 }
 
@@ -396,7 +394,7 @@
 /* ── FOOTER ───────────────────────────────────────────────── */
 .team__footer-note {
   text-align: center;
-  margin-top: var(--space-10);
+  margin-top: var(--space-6);
   padding: 0 var(--px-mobile);
   position: relative;
   z-index: 1;
@@ -405,7 +403,7 @@
 .team__footer-note p {
   font-family: var(--font-accent);
   font-style: italic;
-  font-size: clamp(var(--text-base), 2vw, var(--text-lg));
+  font-size: clamp(var(--text-sm), 1.5vw, var(--text-base));
   color: rgba(245, 240, 232, 0.28);
   line-height: var(--leading-relaxed);
 }

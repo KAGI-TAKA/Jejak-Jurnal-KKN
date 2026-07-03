@@ -1,0 +1,283 @@
+/* ============================================================
+   ARRIVAL.CSS — Section Kedatangan (Bab I)
+   KKN Digital Journal "JEJAK"
+   ============================================================ */
+
+/* ── SECTION WRAPPER ──────────────────────────────────────── */
+.arrival {
+  background-color: var(--bg-primary);
+  padding: var(--space-32) 0;
+  position: relative;
+}
+
+/* Chapter transition bar di atas */
+.arrival::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--px-desktop);
+  right: var(--px-desktop);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-medium) 20%,
+    var(--border-medium) 80%,
+    transparent
+  );
+}
+
+/* ── CHAPTER CARD — interlude cinematic ──────────────────── */
+.chapter-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+  padding: 0 var(--px-mobile);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .chapter-card { padding: 0 var(--px-tablet); }
+}
+@media (min-width: 1280px) {
+  .chapter-card { padding: 0 var(--px-desktop); margin-bottom: var(--space-20); }
+}
+
+.chapter-card__roman {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-5xl), 8vw, var(--text-8xl));
+  font-weight: 700;
+  color: var(--border-light);
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.chapter-card__divider {
+  width: 1px;
+  height: 64px;
+  background: var(--border-medium);
+  flex-shrink: 0;
+}
+
+.chapter-card__text {}
+
+.chapter-card__label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent-sage);
+  margin-bottom: var(--space-2);
+}
+
+.chapter-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+}
+
+.chapter-card__desc {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-base), 2vw, var(--text-xl));
+  color: var(--text-subtle);
+  margin-top: var(--space-2);
+}
+
+/* ── ARRIVAL CONTENT LAYOUT ──────────────────────────────── */
+.arrival__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--px-mobile);
+}
+
+@media (min-width: 768px) {
+  .arrival__inner { padding: 0 var(--px-tablet); }
+}
+@media (min-width: 1280px) {
+  .arrival__inner { padding: 0 var(--px-desktop); }
+}
+
+/* ── ARRIVAL GRID (narasi + foto) ────────────────────────── */
+.arrival__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .arrival__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+/* ── ARRIVAL NARASI ──────────────────────────────────────── */
+.arrival__narasi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.arrival__paragraph {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-md), 1.8vw, var(--text-xl));
+  line-height: var(--leading-loose);
+  color: var(--text-secondary);
+}
+
+.arrival__paragraph:first-of-type {
+  font-size: clamp(var(--text-lg), 2vw, var(--text-2xl));
+  color: var(--text-primary);
+}
+
+.arrival__highlight {
+  color: var(--accent-sage-muted);
+  font-style: italic;
+}
+
+/* ── ARRIVAL FACTS — "Hari Pertama" strip ─────────────────── */
+.arrival__facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-xl);
+  border-left: 3px solid var(--accent-sage);
+  margin-top: var(--space-4);
+}
+
+.arrival__fact {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.arrival__fact-icon {
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.arrival__fact-text {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.arrival__fact-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── ARRIVAL PHOTO STACK ──────────────────────────────────── */
+.arrival__photos {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 899px) {
+  .arrival__photos {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+.arrival__photo {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Foto utama — besar, di belakang */
+.arrival__photo--main {
+  inset: 0;
+  width: 80%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Foto sekunder — kecil, di depan kanan bawah */
+.arrival__photo--secondary {
+  width: 52%;
+  height: 52%;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  border: 4px solid var(--bg-primary);
+}
+
+.arrival__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.arrival__photo:hover img {
+  transform: scale(1.04);
+}
+
+/* Placeholder foto */
+.arrival__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--border-medium));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  color: var(--text-subtle);
+}
+
+.arrival__photo-placeholder svg {
+  width: 32px;
+  height: 32px;
+  opacity: 0.4;
+}
+
+.arrival__photo-placeholder span {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-align: center;
+  opacity: 0.5;
+  padding: 0 var(--space-4);
+}
+
+/* ── DATE STAMP ───────────────────────────────────────────── */
+.arrival__date-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--accent-earth);
+  background-color: rgba(196, 136, 74, 0.10);
+  border: 1px solid rgba(196, 136, 74, 0.25);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.arrival__date-stamp svg {
+  width: 12px;
+  height: 12px;
+}

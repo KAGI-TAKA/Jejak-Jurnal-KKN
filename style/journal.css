@@ -1,0 +1,406 @@
+/* ============================================================
+   JOURNAL.CSS — Section Jurnal Harian (Interaktif)
+   KKN Digital Journal "JEJAK"
+   ============================================================ */
+
+/* ── SECTION WRAPPER ──────────────────────────────────────── */
+.journal {
+  background-color: var(--bg-primary);
+  padding: var(--space-32) 0;
+  overflow: hidden;
+}
+
+/* ── INNER HEADER ─────────────────────────────────────────── */
+.journal__header {
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-10);
+  padding: 0 var(--px-mobile);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .journal__header {
+    padding: 0 var(--px-tablet);
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 1280px) {
+  .journal__header { padding: 0 var(--px-desktop); }
+}
+
+.journal__title-group {}
+
+.journal__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-2);
+}
+
+.journal__subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(var(--text-base), 1.8vw, var(--text-xl));
+  color: var(--text-subtle);
+}
+
+/* ── MOOD FILTER BAR ──────────────────────────────────────── */
+.journal__filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.mood-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color     var(--duration-fast) var(--ease-out),
+    color            var(--duration-fast) var(--ease-out),
+    transform        var(--duration-fast) var(--ease-out);
+  user-select: none;
+}
+
+.mood-btn:hover {
+  background-color: var(--border-light);
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+}
+
+.mood-btn.is-active {
+  background-color: var(--accent-sage);
+  border-color: var(--accent-sage);
+  color: white;
+}
+
+.mood-btn__emoji {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── JOURNAL SCROLL CONTAINER ────────────────────────────── */
+.journal__scroll-wrapper {
+  position: relative;
+  /* Fade di tepi kanan */
+}
+
+.journal__scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.journal__track {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: var(--space-4) var(--px-mobile) var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .journal__track { padding: var(--space-4) var(--px-tablet) var(--space-8); }
+}
+@media (min-width: 1280px) {
+  .journal__track { padding: var(--space-4) var(--px-desktop) var(--space-8); }
+}
+
+.journal__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── JOURNAL CARD ─────────────────────────────────────────── */
+.journal-card {
+  flex: none;
+  width: 280px;
+  scroll-snap-align: start;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  position: relative;
+
+  transition:
+    transform    var(--duration-normal) var(--ease-out),
+    box-shadow   var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out),
+    opacity      300ms var(--ease-out);
+}
+
+.journal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-medium);
+}
+
+/* State: filtered out */
+.journal-card.is-filtered {
+  opacity: 0.25;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+
+/* State: "coming soon" — belum ada konten */
+.journal-card.is-upcoming {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.journal-card.is-upcoming:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── CARD PHOTO ───────────────────────────────────────────── */
+.journal-card__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-secondary), var(--border-medium));
+}
+
+.journal-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.journal-card:hover .journal-card__photo img {
+  transform: scale(1.05);
+}
+
+/* Placeholder foto jurnal */
+.journal-card__photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-4xl);
+  opacity: 0.25;
+}
+
+/* ── DAY BADGE (di atas foto) ─────────────────────────────── */
+.journal-card__day-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1;
+  background-color: rgba(26, 22, 18, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-3);
+}
+
+.journal-card__day-num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.journal-card__day-label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.55);
+}
+
+/* ── MOOD INDICATOR (pojok kanan atas foto) ───────────────── */
+.journal-card__mood {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 1;
+  font-size: var(--text-xl);
+  background-color: rgba(26, 22, 18, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── CARD BODY ────────────────────────────────────────────── */
+.journal-card__body {
+  padding: var(--space-5);
+}
+
+.journal-card__date {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-earth);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.journal-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-3);
+}
+
+.journal-card__excerpt {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── CARD FOOTER ──────────────────────────────────────────── */
+.journal-card__footer {
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-light);
+}
+
+.journal-card__read-more {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--accent-sage-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  text-transform: uppercase;
+  transition: gap var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.journal-card:hover .journal-card__read-more {
+  gap: var(--space-2);
+  color: var(--accent-sage);
+}
+
+.journal-card__read-more svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ── UPCOMING CARD OVERLAY ────────────────────────────────── */
+.journal-card__upcoming-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(245, 240, 232, 0.6);
+  backdrop-filter: blur(4px);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.journal-card.is-upcoming:hover .journal-card__upcoming-label {
+  opacity: 1;
+}
+
+/* ── JOURNAL NAV ARROWS (desktop) ────────────────────────── */
+.journal__nav {
+  display: none;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--px-desktop);
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+@media (min-width: 1280px) {
+  .journal__nav { display: flex; }
+}
+
+.journal__nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color var(--duration-normal) var(--ease-out),
+    border-color     var(--duration-normal) var(--ease-out),
+    color            var(--duration-normal) var(--ease-out),
+    transform        var(--duration-normal) var(--ease-out);
+}
+
+.journal__nav-btn:hover {
+  background-color: var(--accent-sage);
+  border-color: var(--accent-sage);
+  color: white;
+  transform: scale(1.05);
+}
+
+.journal__nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── EMPTY STATE (belum ada jurnal sama sekali) ───────────── */
+.journal__empty {
+  text-align: center;
+  padding: var(--space-16) var(--px-mobile);
+  color: var(--text-subtle);
+}
+
+.journal__empty p {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-lg);
+}

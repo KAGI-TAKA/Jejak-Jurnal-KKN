@@ -1,323 +1,1006 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#1A1612" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1A1612" />
 
-  <!-- SEO -->
-  <title>Jejak — Jurnal Digital KKN</title>
-  <meta name="description" content="Sebuah jurnal digital sinematik yang mengabadikan empat puluh hari perjalanan, kehidupan, dan kenangan selama program KKN." />
-  <meta name="robots" content="index, follow" />
+    <!-- SEO -->
+    <title>Jejak — Jurnal Digital KKN</title>
+    <meta
+      name="description"
+      content="Sebuah jurnal digital sinematik yang mengabadikan empat puluh hari perjalanan, kehidupan, dan kenangan selama program KKN."
+    />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph (untuk sharing di sosmed) -->
-  <meta property="og:title" content="Jejak — Jurnal Digital KKN" />
-  <meta property="og:description" content="Bukan laporan. Sebuah kenangan yang bisa dikunjungi kembali." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/images/og-image.jpg" />
+    <!-- Open Graph (untuk sharing di sosmed) -->
+    <meta property="og:title" content="Jejak — Jurnal Digital KKN" />
+    <meta
+      property="og:description"
+      content="Bukan laporan. Sebuah kenangan yang bisa dikunjungi kembali."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/og-image.jpg" />
 
-  <!-- Preconnect Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- CSS — urutan penting -->
-  <link rel="stylesheet" href="style/tokens.css" />
-  <link rel="stylesheet" href="style/base.css" />
-  <link rel="stylesheet" href="style/nav.css" />
-  <link rel="stylesheet" href="style/hero.css" />
-  <link rel="stylesheet" href="style/intro.css" />
-  <link rel="stylesheet" href="style/prolog.css" />
-  <link rel="stylesheet" href="style/team.css" />
-</head>
+    <!-- CSS — urutan penting -->
+    <link rel="stylesheet" href="style/tokens.css" />
+    <link rel="stylesheet" href="style/base.css" />
+    <link rel="stylesheet" href="style/nav.css" />
+    <link rel="stylesheet" href="style/hero.css" />
+    <link rel="stylesheet" href="style/intro.css" />
+    <link rel="stylesheet" href="style/prolog.css" />
+    <link rel="stylesheet" href="style/team.css" />
+    <link rel="stylesheet" href="style/arrival.css" />
+    <link rel="stylesheet" href="style/village.css" />
+    <link rel="stylesheet" href="style/journal.css" />
+  <link rel="stylesheet" href="style/program.css" />
+  <link rel="stylesheet" href="style/moments.css" />
+  <link rel="stylesheet" href="style/reflection.css" />
+  <link rel="stylesheet" href="style/farewell.css" />
+  </head>
 
-<body>
-
-  <!-- ══════════════════════════════════════════════════════
+  <body>
+    <!-- ══════════════════════════════════════════════════════
        00 · INTRO SCREEN
   ══════════════════════════════════════════════════════ -->
-  <div id="intro-screen" class="intro-screen" role="status" aria-label="Memuat Jejak...">
+    <div
+      id="intro-screen"
+      class="intro-screen"
+      role="status"
+      aria-label="Memuat Jejak..."
+    >
+      <h1 class="intro-screen__logo">Jejak<span>.</span></h1>
 
-    <h1 class="intro-screen__logo">
-      Jejak<span>.</span>
-    </h1>
+      <p class="intro-screen__quote">
+        "Ada tempat-tempat yang mengubahmu — bukan dengan cara yang dramatis,
+        tapi dengan cara yang diam-diam dan dalam."
+      </p>
 
-    <p class="intro-screen__quote">
-      "Ada tempat-tempat yang mengubahmu — bukan dengan cara yang dramatis,
-      tapi dengan cara yang diam-diam dan dalam."
-    </p>
-
-    <div class="intro-screen__loader" aria-hidden="true">
-      <div class="intro-screen__loader-bar"></div>
-    </div>
-
-  </div><!-- /intro-screen -->
-
-
-  <!-- ══════════════════════════════════════════════════════
-       NAVIGATION — Floating Bar
-  ══════════════════════════════════════════════════════ -->
-  <nav id="main-nav" class="nav" role="navigation" aria-label="Navigasi utama">
-    <div class="nav__inner">
-
-      <!-- Logo -->
-      <a href="#hero" class="nav__logo" aria-label="Kembali ke awal">Jejak</a>
-
-      <!-- Desktop Links -->
-      <ul class="nav__links" role="list">
-        <li>
-          <a href="#kedatangan" class="nav__link" data-section="kedatangan">
-            Kedatangan
-          </a>
-        </li>
-        <li>
-          <a href="#kehidupan" class="nav__link" data-section="kehidupan">
-            Kehidupan
-          </a>
-        </li>
-        <li>
-          <a href="#jurnal" class="nav__link" data-section="jurnal">
-            Jurnal
-          </a>
-        </li>
-        <li>
-          <a href="#tim" class="nav__link" data-section="tim">
-            Tim Kami
-          </a>
-        </li>
-        <li>
-          <a href="#refleksi" class="nav__link" data-section="refleksi">
-            Refleksi
-          </a>
-        </li>
-      </ul>
-
-      <!-- Right side -->
-      <div style="display: flex; align-items: center; gap: var(--space-3);">
-
-        <!-- Back to top -->
-        <button
-          id="nav-back-top"
-          class="nav__back-top"
-          aria-label="Kembali ke atas"
-          title="Kembali ke atas"
-        >
-          <!-- Arrow up icon (SVG inline) -->
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
-          </svg>
-        </button>
-
-        <!-- Hamburger (mobile) -->
-        <button
-          id="nav-hamburger"
-          class="nav__hamburger"
-          aria-label="Buka menu navigasi"
-          aria-expanded="false"
-          aria-controls="nav-mobile-menu"
-        >
-          <span class="nav__hamburger-line" aria-hidden="true"></span>
-          <span class="nav__hamburger-line" aria-hidden="true"></span>
-          <span class="nav__hamburger-line" aria-hidden="true"></span>
-        </button>
-
+      <div class="intro-screen__loader" aria-hidden="true">
+        <div class="intro-screen__loader-bar"></div>
       </div>
     </div>
-  </nav><!-- /nav -->
-
-
-  <!-- Mobile Menu Drawer -->
-  <div
-    id="nav-mobile-menu"
-    class="nav__mobile-menu"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Menu navigasi"
-    aria-hidden="true"
-  >
-    <a href="#kedatangan" class="nav__mobile-link">Kedatangan</a>
-    <a href="#kehidupan"  class="nav__mobile-link">Kehidupan</a>
-    <a href="#jurnal"     class="nav__mobile-link">Jurnal</a>
-    <a href="#tim"        class="nav__mobile-link">Tim Kami</a>
-    <a href="#refleksi"   class="nav__mobile-link">Refleksi</a>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════════════════
-       READING PROGRESS VINE (desktop only)
-  ══════════════════════════════════════════════════════ -->
-  <div class="progress-vine" aria-hidden="true">
-    <div class="progress-vine__track">
-      <div class="progress-vine__fill"></div>
-    </div>
-  </div>
-
-
-  <!-- ══════════════════════════════════════════════════════
-       MAIN CONTENT
-  ══════════════════════════════════════════════════════ -->
-  <main id="main-content">
-
-
-    <!-- ════════════════════════════════════════════════════
-         01 · HERO SECTION
-    ════════════════════════════════════════════════════ -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-
-      <!-- Background image -->
-      <div class="hero__bg">
-        <div class="hero__bg-parallax">
-          <img
-            src="assets/images/hero-bg.jpg"
-            alt="Pemandangan desa tempat kami menjalani KKN — sawah hijau, langit biru, dan suasana yang tenang"
-            class="hero__bg-image"
-            loading="eager"
-            fetchpriority="high"
-            width="1920"
-            height="1080"
-          />
-        </div>
-      </div>
-
-      <!-- Overlay gradient -->
-      <div class="hero__overlay" aria-hidden="true"></div>
-
-      <!-- Film grain -->
-      <div class="hero__grain" aria-hidden="true"></div>
-
-      <!-- Content -->
-      <div class="hero__content">
-
-        <p class="hero__eyebrow" aria-label="Jurnal KKN">
-          Jurnal KKN · 2025
-        </p>
-
-        <h1 id="hero-title" class="hero__title">
-          Jejak
-        </h1>
-
-        <p class="hero__subtitle">
-          Empat puluh hari. Satu desa.<br />
-          Sepuluh orang. Satu cerita.
-        </p>
-
-        <div class="hero__meta">
-          <!-- Ikon kalender -->
-          <span class="hero__meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2"/>
-              <path d="M16 2v4M8 2v4M3 10h18"/>
-            </svg>
-            Juli – Agustus 2025
-          </span>
-
-          <span class="hero__meta-sep" aria-hidden="true"></span>
-
-          <!-- Ikon lokasi -->
-          <span class="hero__meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-              <circle cx="12" cy="9" r="2.5"/>
-            </svg>
-            Suatu Desa di Indonesia
-          </span>
-
-          <span class="hero__meta-sep" aria-hidden="true"></span>
-
-          <!-- Ikon orang -->
-          <span class="hero__meta-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-            10 Mahasiswa
-          </span>
-        </div>
-
-      </div><!-- /hero__content -->
-
-      <!-- Scroll indicator -->
-      <div class="hero__scroll" aria-hidden="true">
-        <span class="hero__scroll-label">Scroll</span>
-        <div class="hero__scroll-line"></div>
-      </div>
-
-    </section><!-- /hero -->
-
-
-    ">
-      <div class="container prose-container" style="text-align: center; padding-top: var(--space-32); padding-bottom: var(--space-32);">
-        <p class="section-eyebrow" style="justify-content: center;">Prolog</p>
-        <h2 class="reveal" style="font-family: var(--font-display); font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); margin-bottom: var(--space-6); color: var(--text-primary);">
-          Sebelum semuanya dimulai...
-        </h2>
-        <p class="reveal reveal-delay-1" style="font-family: var(--font-body); font-size: var(--text-xl); line-height: var(--leading-loose); color: var(--text-secondary); max-width: 580px; margin: 0 auto;">
-          Konten prolog akan ditulis segera. Ini adalah tempat di mana kami akan menceritakan awal dari segalanya — sebelum kami tahu apa yang menanti kami di ujung perjalanan ini.
-        </p>
-        <hr class="divider" style="margin: var(--space-8) auto;" />
-        <p style="font-family: var(--font-ui); font-size: var(--text-sm); color: var(--text-subtle);">
-          Sprint 2 — Coming soon
-        </p>
-      </div>
-    </section>
-
-
-    <!-- ════════════════════════════════════════════════════
-         SECTIONS LAIN — Placeholder sampai Sprint berikutnya
-    ════════════════════════════════════════════════════ -->
-
-    <section id="kedatangan" style="min-height: 60vh; background: var(--bg-secondary); display: grid; place-items: center;">
-      <div style="text-align: center; padding: var(--space-16);">
-        <p class="section-eyebrow" style="justify-content: center;">Bab I</p>
-        <h2 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--text-primary);">Kedatangan</h2>
-        <p style="color: var(--text-subtle); font-family: var(--font-ui); margin-top: var(--space-3);">Sprint 3</p>
-      </div>
-    </section>
-
-    <section id="kehidupan" style="min-height: 60vh; background: var(--bg-primary); display: grid; place-items: center;">
-      <div style="text-align: center; padding: var(--space-16);">
-        <p class="section-eyebrow" style="justify-content: center;">Bab II</p>
-        <h2 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--text-primary);">Kehidupan Desa</h2>
-        <p style="color: var(--text-subtle); font-family: var(--font-ui); margin-top: var(--space-3);">Sprint 3</p>
-      </div>
-    </section>
-
-    <section id="jurnal" style="min-height: 60vh; background: var(--bg-secondary); display: grid; place-items: center;">
-      <div style="text-align: center; padding: var(--space-16);">
-        <p class="section-eyebrow" style="justify-content: center;">Interaktif</p>
-        <h2 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--text-primary);">Jurnal Harian</h2>
-        <p style="color: var(--text-subtle); font-family: var(--font-ui); margin-top: var(--space-3);">Sprint 4</p>
-      </div>
-    </section>
+    <!-- /intro-screen -->
 
     <!-- ══════════════════════════════════════════════════════
+       NAVIGATION — Floating Bar
+  ══════════════════════════════════════════════════════ -->
+    <nav
+      id="main-nav"
+      class="nav"
+      role="navigation"
+      aria-label="Navigasi utama"
+    >
+      <div class="nav__inner">
+        <!-- Logo -->
+        <a href="#hero" class="nav__logo" aria-label="Kembali ke awal">Jejak</a>
+
+        <!-- Desktop Links -->
+        <ul class="nav__links" role="list">
+          <li>
+            <a href="#kedatangan" class="nav__link" data-section="kedatangan">
+              Kedatangan
+            </a>
+          </li>
+          <li>
+            <a href="#kehidupan" class="nav__link" data-section="kehidupan">
+              Kehidupan
+            </a>
+          </li>
+          <li>
+            <a href="#jurnal" class="nav__link" data-section="jurnal">
+              Jurnal
+            </a>
+          </li>
+          <li>
+            <a href="#tim" class="nav__link" data-section="tim"> Tim Kami </a>
+          </li>
+          <li>
+            <a href="#refleksi" class="nav__link" data-section="refleksi">
+              Refleksi
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right side -->
+        <div style="display: flex; align-items: center; gap: var(--space-3)">
+          <!-- Back to top -->
+          <button
+            id="nav-back-top"
+            class="nav__back-top"
+            aria-label="Kembali ke atas"
+            title="Kembali ke atas"
+          >
+            <!-- Arrow up icon (SVG inline) -->
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
+          </button>
+
+          <!-- Hamburger (mobile) -->
+          <button
+            id="nav-hamburger"
+            class="nav__hamburger"
+            aria-label="Buka menu navigasi"
+            aria-expanded="false"
+            aria-controls="nav-mobile-menu"
+          >
+            <span class="nav__hamburger-line" aria-hidden="true"></span>
+            <span class="nav__hamburger-line" aria-hidden="true"></span>
+            <span class="nav__hamburger-line" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- /nav -->
+
+    <!-- Mobile Menu Drawer -->
+    <div
+      id="nav-mobile-menu"
+      class="nav__mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menu navigasi"
+      aria-hidden="true"
+    >
+      <a href="#kedatangan" class="nav__mobile-link">Kedatangan</a>
+      <a href="#kehidupan" class="nav__mobile-link">Kehidupan</a>
+      <a href="#jurnal" class="nav__mobile-link">Jurnal</a>
+      <a href="#tim" class="nav__mobile-link">Tim Kami</a>
+      <a href="#refleksi" class="nav__mobile-link">Refleksi</a>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+       READING PROGRESS VINE (desktop only)
+  ══════════════════════════════════════════════════════ -->
+    <div class="progress-vine" aria-hidden="true">
+      <div class="progress-vine__track">
+        <div class="progress-vine__fill"></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════ -->
+    <main id="main-content">
+      <!-- ════════════════════════════════════════════════════
+         01 · HERO SECTION
+    ════════════════════════════════════════════════════ -->
+      <section id="hero" class="hero" aria-labelledby="hero-title">
+        <!-- Background image -->
+        <div class="hero__bg">
+          <div class="hero__bg-parallax">
+            <img
+              src="assets/images/hero-bg.jpg"
+              alt="Pemandangan desa tempat kami menjalani KKN — sawah hijau, langit biru, dan suasana yang tenang"
+              class="hero__bg-image"
+              loading="eager"
+              fetchpriority="high"
+              width="1920"
+              height="1080"
+            />
+          </div>
+        </div>
+
+        <!-- Overlay gradient -->
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <!-- Film grain -->
+        <div class="hero__grain" aria-hidden="true"></div>
+
+        <!-- Content -->
+        <div class="hero__content">
+          <p class="hero__eyebrow" aria-label="Jurnal KKN">Jurnal KKN · 2025</p>
+
+          <h1 id="hero-title" class="hero__title">Jejak</h1>
+
+          <p class="hero__subtitle">
+            Lima puluh hari. Satu desa.<br />
+            Sebelas orang. Satu cerita.
+          </p>
+
+          <div class="hero__meta">
+            <!-- Ikon kalender -->
+            <span class="hero__meta-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              Juli – Agustus 2026
+            </span>
+
+            <span class="hero__meta-sep" aria-hidden="true"></span>
+
+            <!-- Ikon lokasi -->
+            <span class="hero__meta-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Suatu Desa di Indonesia
+            </span>
+
+            <span class="hero__meta-sep" aria-hidden="true"></span>
+
+            <!-- Ikon orang -->
+            <span class="hero__meta-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              11 Mahasiswa
+            </span>
+          </div>
+        </div>
+        <!-- /hero__content -->
+
+        <!-- Scroll indicator -->
+        <div class="hero__scroll" aria-hidden="true">
+          <span class="hero__scroll-label">Scroll</span>
+          <div class="hero__scroll-line"></div>
+        </div>
+      </section>
+      <!-- /hero -->
+
+      <!-- ════════════════════════════════════════════════════
+         02 · PROLOG
+    ════════════════════════════════════════════════════ -->
+      <section id="prolog" class="prolog" aria-labelledby="prolog-title">
+        <div class="prolog__inner">
+          <p class="section-eyebrow reveal">Sebelum Semuanya Dimulai</p>
+          <blockquote
+            class="prolog__opening reveal reveal-delay-1"
+            id="prolog-title"
+          >
+            "Kami datang sebagai orang asing. Kami pulang membawa sebagian dari
+            tempat itu."
+          </blockquote>
+          <div class="prolog__divider reveal reveal-delay-2" aria-hidden="true">
+            <div class="prolog__divider-line"></div>
+            <span class="prolog__divider-icon">🌿</span>
+            <div
+              class="prolog__divider-line"
+              style="
+                background: linear-gradient(
+                  to left,
+                  var(--accent-sage),
+                  transparent
+                );
+              "
+            ></div>
+          </div>
+          <div class="prolog__village-tags reveal reveal-delay-2">
+            <span class="village-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Suatu Desa di Jawa
+            </span>
+            <span class="village-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <path d="M16 2v4M8 2v4M3 10h18" />
+              </svg>
+              Juli – Agustus 2026
+            </span>
+            <span class="village-tag">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              11 Mahasiswa
+            </span>
+          </div>
+          <div class="prolog__body">
+            <p class="prolog__paragraph reveal reveal-delay-3">
+              Ini bukan cerita tentang program kerja yang selesai tepat waktu.
+              Ini tentang empat puluh hari yang kami jalani di sebuah desa yang
+              awalnya terasa asing — dan perlahan, tanpa kami sadari, menjadi
+              terasa seperti <span class="prolog__highlight">rumah kedua</span>.
+            </p>
+            <p class="prolog__paragraph reveal reveal-delay-4">
+              Desanya tidak besar. Tidak ramai. Tidak ada sinyal di beberapa
+              sudutnya. Tapi di situlah justru kami menemukan hal-hal yang tidak
+              pernah kami temukan di dalam kelas — kesederhanaan, ketulusan, dan
+              cara hidup yang lambat tapi penuh makna.
+            </p>
+            <!-- 📝 EDIT: Tambahkan deskripsi desa di sini -->
+            <p class="prolog__paragraph reveal reveal-delay-4">
+              <em
+                style="
+                  font-style: italic;
+                  color: var(--text-subtle);
+                  font-size: var(--text-sm);
+                "
+              >
+                — Detail desa akan ditambahkan setelah KKN berjalan. —
+              </em>
+            </p>
+            <p class="prolog__paragraph reveal reveal-delay-5">
+              Website ini adalah usaha kami untuk tidak melupakan. Bukan
+              laporan. Bukan dokumentasi formal. Hanya kejujuran yang kami tulis
+              agar kenangan ini tidak hilang seiring dengan waktu.
+            </p>
+          </div>
+          <div class="prolog__stats reveal reveal-delay-5">
+            <!-- 📝 EDIT: Ubah angka sesuai fakta -->
+            <div class="prolog__stat">
+              <div class="prolog__stat-number">50<span>h</span></div>
+              <div class="prolog__stat-label">Hari bersama</div>
+            </div>
+            <div class="prolog__stat">
+              <div class="prolog__stat-number">11</div>
+              <div class="prolog__stat-label">Anggota tim</div>
+            </div>
+            <div class="prolog__stat">
+              <div class="prolog__stat-number">…</div>
+              <div class="prolog__stat-label">Program kerja</div>
+            </div>
+            <div class="prolog__stat">
+              <div class="prolog__stat-number">∞</div>
+              <div class="prolog__stat-label">Cerita tersimpan</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /prolog -->
+
+      <!-- ════════════════════════════════════════════════════
+         03 · KEDATANGAN
+    ════════════════════════════════════════════════════ -->
+      <section id="kedatangan" class="arrival" aria-labelledby="arrival-title">
+        <div class="chapter-card reveal">
+          <div class="chapter-card__roman" aria-hidden="true">I</div>
+          <div class="chapter-card__divider" aria-hidden="true"></div>
+          <div class="chapter-card__text">
+            <p class="chapter-card__label">Babak Pertama</p>
+            <h2 id="arrival-title" class="chapter-card__title">Kedatangan</h2>
+            <p class="chapter-card__desc">
+              Kami tidak tahu apa yang menanti kami.
+            </p>
+          </div>
+        </div>
+        <div class="arrival__inner">
+          <div class="arrival__grid">
+            <div class="arrival__narasi">
+              <!-- 📝 EDIT: Ubah tanggal sesuai hari pertama KKN -->
+              <div class="arrival__date-stamp reveal">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="12"
+                  height="12"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                Hari Pertama &mdash; [Tanggal KKN Dimulai]
+              </div>
+              <p class="arrival__paragraph reveal reveal-delay-1">
+                Pagi itu kami berangkat dengan ransel yang terlalu penuh dan
+                ekspektasi yang terlalu tinggi. Tidak ada yang benar-benar tahu
+                apa yang akan ditemui di ujung perjalanan ini.
+              </p>
+              <p class="arrival__paragraph reveal reveal-delay-2">
+                Perjalanannya memakan waktu
+                <span class="arrival__highlight">[durasi perjalanan]</span>.
+                Cukup lama untuk mulai bertanya-tanya apakah keputusan ini benar
+                atau tidak &mdash; dan cukup singkat untuk belum sempat
+                menjawabnya.
+              </p>
+              <p class="arrival__paragraph reveal reveal-delay-3">
+                Lalu kami tiba. Dan desa itu terasa lebih
+                <span class="arrival__highlight">sunyi</span> dari yang
+                dibayangkan. Lebih hijau. Lebih nyata.
+              </p>
+              <!-- 📝 EDIT: Isi fakta hari pertama -->
+              <div class="arrival__facts reveal reveal-delay-4">
+                <div class="arrival__fact">
+                  <span class="arrival__fact-icon">🏠</span>
+                  <p class="arrival__fact-text">
+                    <strong>Posko kami:</strong> [deskripsi singkat tempat
+                    tinggal selama KKN]
+                  </p>
+                </div>
+                <div class="arrival__fact">
+                  <span class="arrival__fact-icon">👥</span>
+                  <p class="arrival__fact-text">
+                    <strong>Disambut oleh:</strong> [siapa yang menyambut — Pak
+                    Kades, warga, dll]
+                  </p>
+                </div>
+                <div class="arrival__fact">
+                  <span class="arrival__fact-icon">🌟</span>
+                  <p class="arrival__fact-text">
+                    <strong>Kesan pertama:</strong> [satu kalimat jujur tentang
+                    kesan pertama]
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="arrival__photos reveal reveal-delay-2">
+              <div class="arrival__photo arrival__photo--main">
+                <!-- <img src="assets/images/arrival/tiba.jpg" alt="Momen tiba di desa" /> -->
+                <div class="arrival__photo-placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <span
+                    >Foto saat tiba di desa<br />(ganti dengan foto asli)</span
+                  >
+                </div>
+              </div>
+              <div class="arrival__photo arrival__photo--secondary">
+                <!-- <img src="assets/images/arrival/posko.jpg" alt="Posko KKN" /> -->
+                <div class="arrival__photo-placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  </svg>
+                  <span>Foto posko</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /kedatangan -->
+
+      <!-- ════════════════════════════════════════════════════
+         04 · KEHIDUPAN DESA + PROFIL DESA
+    ════════════════════════════════════════════════════ -->
+      <section id="kehidupan" class="village" aria-labelledby="village-title">
+        <div class="village__inner">
+          <div class="village__header">
+            <p class="section-eyebrow reveal">Mengenal Desa</p>
+            <h2 id="village-title" class="village__title reveal reveal-delay-1">
+              Kehidupan Desa
+            </h2>
+            <p class="village__lead reveal reveal-delay-2">
+              Sebelum kami bisa membantu,<br />kami harus lebih dulu belajar.
+            </p>
+          </div>
+
+          <!-- PROFIL DESA — 📝 Edit kartu-kartu ini -->
+          <div class="village-profile">
+            <div class="profile-card reveal">
+              <span class="profile-card__icon">🌄</span>
+              <p class="profile-card__label">Letak Geografis</p>
+              <p class="profile-card__value">[Jenis Wilayah]</p>
+              <p class="profile-card__detail">
+                Deskripsi singkat letak dan kondisi geografis desa.
+              </p>
+            </div>
+            <div class="profile-card reveal reveal-delay-1">
+              <span class="profile-card__icon">🌾</span>
+              <p class="profile-card__label">Mata Pencaharian Utama</p>
+              <p class="profile-card__value">[Mata Pencaharian]</p>
+              <p class="profile-card__detail">
+                Deskripsi singkat sumber penghidupan warga.
+              </p>
+            </div>
+            <div class="profile-card reveal reveal-delay-2">
+              <span class="profile-card__icon">🌿</span>
+              <p class="profile-card__label">Potensi &amp; Wisata</p>
+              <p class="profile-card__value">[Potensi Desa]</p>
+              <p class="profile-card__detail">
+                Deskripsi singkat potensi dan wisata desa.
+              </p>
+            </div>
+            <!-- 📝 Dusun-dusun -->
+            <div class="profile-card profile-card--wide reveal reveal-delay-3">
+              <span class="profile-card__icon">🏡</span>
+              <p class="profile-card__label">Dusun-dusun</p>
+              <p class="profile-card__value">[X] Dusun</p>
+              <div class="dusun-list">
+                <span class="dusun-pill">Dusun 1</span>
+                <span class="dusun-pill">Dusun 2</span>
+                <span class="dusun-pill">Dusun 3</span>
+                <span class="dusun-pill">Dusun 4</span>
+              </div>
+            </div>
+            <!-- 📝 Perangkat desa (opsional — nama bisa diisi atau dikosongkan) -->
+            <div class="profile-card profile-card--wide reveal reveal-delay-3">
+              <span class="profile-card__icon">📋</span>
+              <p class="profile-card__label">Perangkat Desa</p>
+              <p
+                class="profile-card__value"
+                style="margin-bottom: var(--space-3)"
+              >
+                Struktur Pemerintahan
+              </p>
+              <div class="perangkat-list">
+                <div class="perangkat-item">
+                  <span class="perangkat-item__jabatan">Kepala Desa</span>
+                  <span class="perangkat-item__nama">Bpk/Ibu [Nama]</span>
+                </div>
+                <div class="perangkat-item">
+                  <span class="perangkat-item__jabatan">Sekretaris Desa</span>
+                  <span class="perangkat-item__nama">Bpk/Ibu [Nama]</span>
+                </div>
+                <div class="perangkat-item">
+                  <span class="perangkat-item__jabatan">Bendahara Desa</span>
+                  <span class="perangkat-item__nama">Bpk/Ibu [Nama]</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO FOTO KEHIDUPAN -->
+          <div class="village-life">
+            <h3 class="village-life__heading reveal">Sehari-hari di Sini</h3>
+            <div class="life-bento">
+              <div class="bento-item reveal">
+                <div class="bento-item__placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" /></svg
+                  ><span class="bento-item__placeholder-label"
+                    >Foto kehidupan desa 1</span
+                  >
+                </div>
+                <div class="bento-item__caption">
+                  <p class="bento-item__caption-text">[Keterangan foto]</p>
+                </div>
+              </div>
+              <div class="bento-item bento-item--text reveal reveal-delay-1">
+                <span class="bento-eyebrow">Keseharian</span>
+                <h4 class="bento-title">[Judul Momen]</h4>
+                <p class="bento-body">
+                  Deskripsi singkat tentang salah satu aspek kehidupan
+                  sehari-hari di desa ini.
+                </p>
+              </div>
+              <div class="bento-item reveal reveal-delay-2">
+                <div class="bento-item__placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" /></svg
+                  ><span class="bento-item__placeholder-label">Foto 2</span>
+                </div>
+              </div>
+              <div class="bento-item bento-item--quote reveal reveal-delay-3">
+                <p class="bento-quote-text">
+                  &ldquo;[Kutipan dari warga desa atau momen berkesan yang
+                  menggambarkan desa ini.]&rdquo;
+                </p>
+                <p class="bento-quote-attr">&mdash; [Nama/Warga Desa]</p>
+              </div>
+              <div class="bento-item reveal reveal-delay-2">
+                <div class="bento-item__placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" /></svg
+                  ><span class="bento-item__placeholder-label">Foto 3</span>
+                </div>
+              </div>
+              <div class="bento-item reveal reveal-delay-3">
+                <div class="bento-item__placeholder">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" /></svg
+                  ><span class="bento-item__placeholder-label">Foto 4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /kehidupan -->
+
+      <!-- ════════════════════════════════════════════════════
+         06 · JURNAL HARIAN
+    ════════════════════════════════════════════════════ -->
+      <section id="jurnal" class="journal" aria-labelledby="journal-title">
+        <div class="journal__header">
+          <div class="journal__title-group">
+            <p class="section-eyebrow reveal">Setiap Hari, Sebuah Cerita</p>
+            <h2 id="journal-title" class="journal__title reveal reveal-delay-1">
+              Jurnal Harian
+            </h2>
+            <p class="journal__subtitle reveal reveal-delay-2">
+              Geser untuk menjelajahi hari per hari.
+            </p>
+          </div>
+          <div
+            class="journal__filter reveal reveal-delay-2"
+            role="group"
+            aria-label="Filter berdasarkan suasana"
+          >
+            <button class="mood-btn is-active" data-mood="all">Semua</button>
+            <button class="mood-btn" data-mood="seru">
+              <span class="mood-btn__emoji">😊</span> Seru
+            </button>
+            <button class="mood-btn" data-mood="lucu">
+              <span class="mood-btn__emoji">😂</span> Lucu
+            </button>
+            <button class="mood-btn" data-mood="capek">
+              <span class="mood-btn__emoji">😴</span> Capek
+            </button>
+            <button class="mood-btn" data-mood="haru">
+              <span class="mood-btn__emoji">😢</span> Haru
+            </button>
+            <button class="mood-btn" data-mood="hujan">
+              <span class="mood-btn__emoji">🌧️</span> Hujan
+            </button>
+          </div>
+        </div>
+        <div class="journal__nav">
+          <button
+            id="journal-prev"
+            class="journal__nav-btn"
+            aria-label="Geser ke kiri"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            id="journal-next"
+            class="journal__nav-btn"
+            aria-label="Geser ke kanan"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+        <!-- 📝 PANDUAN: Duplikat blok journal-card untuk setiap hari baru -->
+        <div class="journal__scroll-wrapper">
+          <div class="journal__track" role="list" id="journal-track">
+            <article
+              class="journal-card"
+              role="listitem"
+              data-mood="seru"
+              tabindex="0"
+            >
+              <div class="journal-card__photo">
+                <div class="journal-card__photo-placeholder">🌞</div>
+                <div class="journal-card__day-badge">
+                  <div class="journal-card__day-num">01</div>
+                  <div class="journal-card__day-label">Hari</div>
+                </div>
+                <div class="journal-card__mood" aria-label="Mood: Seru">😊</div>
+              </div>
+              <div class="journal-card__body">
+                <p class="journal-card__date">[Tanggal, Hari]</p>
+                <h3 class="journal-card__title">Hari Pertama di Desa</h3>
+                <p class="journal-card__excerpt">
+                  [Preview cerita hari pertama. 2-3 kalimat yang membuat pembaca
+                  penasaran untuk membaca lebih lanjut.]
+                </p>
+              </div>
+              <div class="journal-card__footer">
+                <span class="journal-card__read-more"
+                  >Baca selengkapnya
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" /></svg
+                ></span>
+              </div>
+            </article>
+
+            <article
+              class="journal-card"
+              role="listitem"
+              data-mood="lucu"
+              tabindex="0"
+            >
+              <div class="journal-card__photo">
+                <div class="journal-card__photo-placeholder">🌟</div>
+                <div class="journal-card__day-badge">
+                  <div class="journal-card__day-num">02</div>
+                  <div class="journal-card__day-label">Hari</div>
+                </div>
+                <div class="journal-card__mood" aria-label="Mood: Lucu">😂</div>
+              </div>
+              <div class="journal-card__body">
+                <p class="journal-card__date">[Tanggal, Hari]</p>
+                <h3 class="journal-card__title">Judul Hari Kedua</h3>
+                <p class="journal-card__excerpt">
+                  [Preview cerita hari kedua.]
+                </p>
+              </div>
+              <div class="journal-card__footer">
+                <span class="journal-card__read-more"
+                  >Baca selengkapnya
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" /></svg
+                ></span>
+              </div>
+            </article>
+
+            <article
+              class="journal-card"
+              role="listitem"
+              data-mood="capek"
+              tabindex="0"
+            >
+              <div class="journal-card__photo">
+                <div class="journal-card__photo-placeholder">🌙</div>
+                <div class="journal-card__day-badge">
+                  <div class="journal-card__day-num">03</div>
+                  <div class="journal-card__day-label">Hari</div>
+                </div>
+                <div class="journal-card__mood" aria-label="Mood: Capek">
+                  😴
+                </div>
+              </div>
+              <div class="journal-card__body">
+                <p class="journal-card__date">[Tanggal, Hari]</p>
+                <h3 class="journal-card__title">Judul Hari Ketiga</h3>
+                <p class="journal-card__excerpt">
+                  [Preview cerita hari ketiga.]
+                </p>
+              </div>
+              <div class="journal-card__footer">
+                <span class="journal-card__read-more"
+                  >Baca selengkapnya
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" /></svg
+                ></span>
+              </div>
+            </article>
+
+            <article
+              class="journal-card"
+              role="listitem"
+              data-mood="haru"
+              tabindex="0"
+            >
+              <div class="journal-card__photo">
+                <div class="journal-card__photo-placeholder">🌈</div>
+                <div class="journal-card__day-badge">
+                  <div class="journal-card__day-num">04</div>
+                  <div class="journal-card__day-label">Hari</div>
+                </div>
+                <div class="journal-card__mood" aria-label="Mood: Haru">😢</div>
+              </div>
+              <div class="journal-card__body">
+                <p class="journal-card__date">[Tanggal, Hari]</p>
+                <h3 class="journal-card__title">Judul Hari Keempat</h3>
+                <p class="journal-card__excerpt">
+                  [Preview cerita hari keempat.]
+                </p>
+              </div>
+              <div class="journal-card__footer">
+                <span class="journal-card__read-more"
+                  >Baca selengkapnya
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" /></svg
+                ></span>
+              </div>
+            </article>
+
+            <article
+              class="journal-card is-upcoming"
+              role="listitem"
+              tabindex="-1"
+              aria-label="Jurnal hari 5 belum tersedia"
+            >
+              <div class="journal-card__photo">
+                <div class="journal-card__photo-placeholder">✨</div>
+                <div class="journal-card__day-badge">
+                  <div class="journal-card__day-num">05</div>
+                  <div class="journal-card__day-label">Hari</div>
+                </div>
+              </div>
+              <div class="journal-card__body">
+                <p class="journal-card__date">Segera hadir</p>
+                <h3 class="journal-card__title">Hari Kelima</h3>
+                <p class="journal-card__excerpt">
+                  Cerita hari ini belum ditulis. Nantikan.
+                </p>
+              </div>
+              <div class="journal-card__upcoming-label">Segera hadir</div>
+            </article>
+
+            <!-- Tambahkan kartu hari berikutnya di sini — duplikat blok journal-card di atas -->
+          </div>
+        </div>
+      </section>
+      <!-- /jurnal -->
+
+      <!-- ══════════════════════════════════════════════════════
          10 · TIM KAMI
     ══════════════════════════════════════════════════════ -->
-    <section id="tim" class="team" aria-labelledby="team-title">
 
-      <!-- Header -->
-      <div class="team__header">
-        <p class="section-eyebrow reveal" style="justify-content: center; color: var(--accent-sage-light);">
-          Orang-orang di Balik Cerita
-        </p>
-        <h2 id="team-title" class="team__title reveal reveal-delay-1">
-          Tim Kami
-        </h2>
-        <p class="team__subtitle reveal reveal-delay-2">
-          Sebelas orang, satu tujuan, seribu kenangan.
-        </p>
-      </div>
+      <section id="tim" class="team" aria-labelledby="team-title">
+        <!-- Header -->
+        <div class="team__header">
+          <p
+            class="section-eyebrow reveal"
+            style="justify-content: center; color: var(--accent-sage-light)"
+          >
+            Orang-orang di Balik Cerita
+          </p>
+          <h2 id="team-title" class="team__title reveal reveal-delay-1">
+            Tim Kami
+          </h2>
+          <p class="team__subtitle reveal reveal-delay-2">
+            Sebelas orang, satu tujuan, seribu kenangan.
+          </p>
+        </div>
 
-      <!--
+        <!--
         📝 PANDUAN EDIT PANEL:
 
         Setiap panel = satu anggota. Yang diubah:
@@ -339,293 +1022,1172 @@
                loading="lazy" />
       -->
 
-      <!-- Expanding Panels Container -->
-      <div class="team__panels" role="list">
-
-        <!-- ── PANEL 01 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="1" aria-label="Anggota 1">
-          <div class="team-panel__number" aria-hidden="true">01</div>
-          <div class="team-panel__placeholder" aria-hidden="true">
-            <span class="team-panel__initials">A</span>
-          </div>
-          <!-- <img src="assets/images/team/01.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-              Kota Asal
+        <!-- Expanding Panels Container -->
+        <div class="team__panels" role="list">
+          <!-- ── PANEL 01 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="1"
+            aria-label="Anggota 1"
+          >
+            <div class="team-panel__number" aria-hidden="true">01</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">A</span>
             </div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+            <!-- <img src="assets/images/team/01.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 02 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="2"
+            aria-label="Anggota 2"
+          >
+            <div class="team-panel__number" aria-hidden="true">02</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">B</span>
+            </div>
+            <!-- <img src="assets/images/team/02.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 03 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="3"
+            aria-label="Anggota 3"
+          >
+            <div class="team-panel__number" aria-hidden="true">03</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">C</span>
+            </div>
+            <!-- <img src="assets/images/team/03.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 04 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="4"
+            aria-label="Anggota 4"
+          >
+            <div class="team-panel__number" aria-hidden="true">04</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">D</span>
+            </div>
+            <!-- <img src="assets/images/team/04.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 05 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="5"
+            aria-label="Anggota 5"
+          >
+            <div class="team-panel__number" aria-hidden="true">05</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">E</span>
+            </div>
+            <!-- <img src="assets/images/team/05.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 06 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="6"
+            aria-label="Anggota 6"
+          >
+            <div class="team-panel__number" aria-hidden="true">06</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">F</span>
+            </div>
+            <!-- <img src="assets/images/team/06.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 07 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="7"
+            aria-label="Anggota 7"
+          >
+            <div class="team-panel__number" aria-hidden="true">07</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">G</span>
+            </div>
+            <!-- <img src="assets/images/team/07.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 08 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="8"
+            aria-label="Anggota 8"
+          >
+            <div class="team-panel__number" aria-hidden="true">08</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">H</span>
+            </div>
+            <!-- <img src="assets/images/team/08.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 09 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="9"
+            aria-label="Anggota 9"
+          >
+            <div class="team-panel__number" aria-hidden="true">09</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">I</span>
+            </div>
+            <!-- <img src="assets/images/team/09.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 10 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="10"
+            aria-label="Anggota 10"
+          >
+            <div class="team-panel__number" aria-hidden="true">10</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">J</span>
+            </div>
+            <!-- <img src="assets/images/team/10.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+
+          <!-- ── PANEL 11 ── -->
+          <article
+            class="team-panel"
+            role="listitem"
+            tabindex="0"
+            data-member="11"
+            aria-label="Anggota 11"
+          >
+            <div class="team-panel__number" aria-hidden="true">11</div>
+            <div class="team-panel__placeholder" aria-hidden="true">
+              <span class="team-panel__initials">K</span>
+            </div>
+            <!-- <img src="assets/images/team/11.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
+            <div class="team-panel__overlay" aria-hidden="true"></div>
+            <div class="team-panel__side-line" aria-hidden="true"></div>
+            <div class="team-panel__content">
+              <span class="team-panel__role">Peran di Tim</span>
+              <h3 class="team-panel__name">Nama</h3>
+              <div class="team-panel__origin">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  width="11"
+                  height="11"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  />
+                  <circle cx="12" cy="9" r="2.5" /></svg
+                >Kota Asal
+              </div>
+              <div class="team-panel__sep" aria-hidden="true"></div>
+              <p class="team-panel__quote">
+                &ldquo;Deskripsi unik yang menggambarkan kepribadian selama
+                KKN.&rdquo;
+              </p>
+            </div>
+          </article>
+        </div>
+        <!-- /team__panels -->
+
+        <!-- Scroll hint (mobile) -->
+        <div class="team__scroll-hint reveal">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="14"
+            height="14"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+          Geser untuk melihat semua
+        </div>
+
+        <!-- Footer note -->
+        <div class="team__footer-note reveal">
+          <p>
+            &ldquo;Kami tidak memilih satu sama lain. Tapi entah bagaimana, kami
+            menjadi tim yang saling memilih.&rdquo;
+          </p>
+        </div>
+      </section>
+      <!-- /tim -->
+
+      <!-- ════════════════════════════════════════════
+         07 · PROGRAM KERJA
+    ════════════════════════════════════════════ -->
+    <section id="program" class="program" aria-labelledby="program-title">
+      <div class="program__inner">
+        <div class="program__header">
+          <div>
+            <p class="section-eyebrow reveal">Yang Kami Kerjakan</p>
+            <h2 id="program-title" class="program__title reveal reveal-delay-1">Program Kerja</h2>
+            <p class="program__subtitle reveal reveal-delay-2">Bukan sekadar daftar — ini cerita di balik setiap kegiatan.</p>
           </div>
-        </article>
-
-        <!-- ── PANEL 02 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="2" aria-label="Anggota 2">
-          <div class="team-panel__number" aria-hidden="true">02</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">B</span></div>
-          <!-- <img src="assets/images/team/02.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <div class="program__filter reveal reveal-delay-2">
+            <button class="status-btn is-active" data-status="all">Semua</button>
+            <button class="status-btn" data-status="done"><span class="status-dot status-dot--done"></span>Terlaksana</button>
+            <button class="status-btn" data-status="ongoing"><span class="status-dot status-dot--ongoing"></span>Berlangsung</button>
+            <button class="status-btn" data-status="planned"><span class="status-dot status-dot--planned"></span>Rencana</button>
           </div>
-        </article>
+        </div>
 
-        <!-- ── PANEL 03 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="3" aria-label="Anggota 3">
-          <div class="team-panel__number" aria-hidden="true">03</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">C</span></div>
-          <!-- <img src="assets/images/team/03.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+        <!--
+          📝 PANDUAN EDIT PROGRAM KERJA:
+          data-status = "done" | "ongoing" | "planned"
+          .program-card__status--done / --ongoing / --planned
+          .program-card__category = bidang (Pendidikan, Kesehatan, Ekonomi, Lingkungan, dll)
+          Tambah atau hapus kartu sesuai jumlah proker
+        -->
+        <div class="program__grid">
+
+          <!-- PROKER 01 -->
+          <div class="program-card reveal" data-status="planned">
+            <div class="program-card__photo">
+              <!-- <img src="assets/images/program/proker-01.jpg" alt=""> -->
+              <div class="program-card__photo-placeholder">📚</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category"><!-- 📝 Bidang --> Pendidikan</p>
+              <h3 class="program-card__title"><!-- 📝 Nama Program --> Nama Program Kerja 1</h3>
+              <p class="program-card__desc"><!-- 📝 Deskripsi singkat 2-3 kalimat --> Deskripsi singkat tentang program kerja ini, tujuannya, dan manfaat yang diharapkan bagi masyarakat desa.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date"><!-- 📝 Tanggal --> TBD</span>
+              <span class="program-card__sasaran"><!-- 📝 Sasaran --> Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 04 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="4" aria-label="Anggota 4">
-          <div class="team-panel__number" aria-hidden="true">04</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">D</span></div>
-          <!-- <img src="assets/images/team/04.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <!-- PROKER 02 -->
+          <div class="program-card reveal reveal-delay-1" data-status="planned">
+            <div class="program-card__photo">
+              <div class="program-card__photo-placeholder">🌱</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category">Lingkungan</p>
+              <h3 class="program-card__title">Nama Program Kerja 2</h3>
+              <p class="program-card__desc">Deskripsi singkat tentang program kerja ini.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date">TBD</span>
+              <span class="program-card__sasaran">Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 05 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="5" aria-label="Anggota 5">
-          <div class="team-panel__number" aria-hidden="true">05</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">E</span></div>
-          <!-- <img src="assets/images/team/05.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <!-- PROKER 03 -->
+          <div class="program-card reveal reveal-delay-2" data-status="planned">
+            <div class="program-card__photo">
+              <div class="program-card__photo-placeholder">❤️</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category">Kesehatan</p>
+              <h3 class="program-card__title">Nama Program Kerja 3</h3>
+              <p class="program-card__desc">Deskripsi singkat tentang program kerja ini.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date">TBD</span>
+              <span class="program-card__sasaran">Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 06 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="6" aria-label="Anggota 6">
-          <div class="team-panel__number" aria-hidden="true">06</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">F</span></div>
-          <!-- <img src="assets/images/team/06.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <!-- PROKER 04 -->
+          <div class="program-card reveal" data-status="planned">
+            <div class="program-card__photo">
+              <div class="program-card__photo-placeholder">💡</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category">Ekonomi</p>
+              <h3 class="program-card__title">Nama Program Kerja 4</h3>
+              <p class="program-card__desc">Deskripsi singkat tentang program kerja ini.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date">TBD</span>
+              <span class="program-card__sasaran">Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 07 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="7" aria-label="Anggota 7">
-          <div class="team-panel__number" aria-hidden="true">07</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">G</span></div>
-          <!-- <img src="assets/images/team/07.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <!-- PROKER 05 -->
+          <div class="program-card reveal reveal-delay-1" data-status="planned">
+            <div class="program-card__photo">
+              <div class="program-card__photo-placeholder">🎨</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category">Seni &amp; Budaya</p>
+              <h3 class="program-card__title">Nama Program Kerja 5</h3>
+              <p class="program-card__desc">Deskripsi singkat tentang program kerja ini.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date">TBD</span>
+              <span class="program-card__sasaran">Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 08 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="8" aria-label="Anggota 8">
-          <div class="team-panel__number" aria-hidden="true">08</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">H</span></div>
-          <!-- <img src="assets/images/team/08.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <!-- PROKER 06 -->
+          <div class="program-card reveal reveal-delay-2" data-status="planned">
+            <div class="program-card__photo">
+              <div class="program-card__photo-placeholder">🏗️</div>
+              <div class="program-card__status program-card__status--planned">
+                <span class="status-dot status-dot--planned"></span> Rencana
+              </div>
+            </div>
+            <div class="program-card__body">
+              <p class="program-card__category">Infrastruktur</p>
+              <h3 class="program-card__title">Nama Program Kerja 6</h3>
+              <p class="program-card__desc">Deskripsi singkat tentang program kerja ini.</p>
+            </div>
+            <div class="program-card__footer">
+              <span class="program-card__date">TBD</span>
+              <span class="program-card__sasaran">Sasaran</span>
+            </div>
           </div>
-        </article>
 
-        <!-- ── PANEL 09 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="9" aria-label="Anggota 9">
-          <div class="team-panel__number" aria-hidden="true">09</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">I</span></div>
-          <!-- <img src="assets/images/team/09.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+        </div><!-- /program__grid -->
+
+        <!-- Summary strip — 📝 update angka setelah selesai -->
+        <div class="program__summary reveal">
+          <div class="program__summary-item">
+            <span class="program__summary-num">…</span>
+            <span class="program__summary-label">Total Proker</span>
           </div>
-        </article>
-
-        <!-- ── PANEL 10 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="10" aria-label="Anggota 10">
-          <div class="team-panel__number" aria-hidden="true">10</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">J</span></div>
-          <!-- <img src="assets/images/team/10.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <div class="program__summary-item">
+            <span class="program__summary-num" style="color: var(--accent-sage);">0</span>
+            <span class="program__summary-label">Terlaksana</span>
           </div>
-        </article>
-
-        <!-- ── PANEL 11 ── -->
-        <article class="team-panel" role="listitem" tabindex="0"
-                 data-member="11" aria-label="Anggota 11">
-          <div class="team-panel__number" aria-hidden="true">11</div>
-          <div class="team-panel__placeholder" aria-hidden="true"><span class="team-panel__initials">K</span></div>
-          <!-- <img src="assets/images/team/11.jpg" alt="" class="team-panel__bg" loading="lazy"> -->
-          <div class="team-panel__overlay" aria-hidden="true"></div>
-          <div class="team-panel__side-line" aria-hidden="true"></div>
-          <div class="team-panel__content">
-            <span class="team-panel__role">Peran di Tim</span>
-            <h3 class="team-panel__name">Nama</h3>
-            <div class="team-panel__origin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="11" height="11"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Kota Asal</div>
-            <div class="team-panel__sep" aria-hidden="true"></div>
-            <p class="team-panel__quote">&ldquo;Deskripsi unik yang menggambarkan kepribadian selama KKN.&rdquo;</p>
+          <div class="program__summary-item">
+            <span class="program__summary-num" style="color: var(--accent-earth);">0</span>
+            <span class="program__summary-label">Berlangsung</span>
           </div>
-        </article>
+          <div class="program__summary-item">
+            <span class="program__summary-num">…</span>
+            <span class="program__summary-label">Rencana</span>
+          </div>
+        </div>
 
-      </div><!-- /team__panels -->
-
-      <!-- Scroll hint (mobile) -->
-      <div class="team__scroll-hint reveal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Geser untuk melihat semua
       </div>
+    </section><!-- /program -->
 
-      <!-- Footer note -->
-      <div class="team__footer-note reveal">
-        <p>&ldquo;Kami tidak memilih satu sama lain. Tapi entah bagaimana,
-        kami menjadi tim yang saling memilih.&rdquo;</p>
+
+    <!-- ════════════════════════════════════════════
+         08 · MOMEN LUCU & TAK TERDUGA
+    ════════════════════════════════════════════ -->
+    <section id="momen" class="moments" aria-labelledby="moments-title">
+      <div class="moments__inner">
+        <div class="moments__header">
+          <p class="section-eyebrow reveal" style="justify-content: center;">Di Luar Rencana</p>
+          <h2 id="moments-title" class="moments__title reveal reveal-delay-1">Momen Lucu &amp; Tak Terduga</h2>
+          <p class="moments__subtitle reveal reveal-delay-2">
+            Yang tidak ada di agenda, tapi selalu paling diingat.
+          </p>
+        </div>
+
+        <!-- Ticker scrolling -->
+        <div class="moments__ticker reveal">
+          <div class="moments__ticker-inner" aria-hidden="true">
+            <!-- Diulang 2x untuk infinite scroll yang smooth -->
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Momen tak terduga</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Yang bikin ngakak</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Baper yang disengaja</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Kejadian aneh jam 3 pagi</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Yang pasti dikenang</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Momen tak terduga</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Yang bikin ngakak</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Baper yang disengaja</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Kejadian aneh jam 3 pagi</span>
+            <span class="moments__ticker-item"><span class="moments__ticker-dot"></span>Yang pasti dikenang</span>
+          </div>
+        </div>
+
+        <!--
+          📝 PANDUAN EDIT MOMEN:
+          Ada 2 tipe kartu:
+          1. Dengan foto: .moment-card biasa + .moment-card__photo + img
+          2. Text/quote only: .moment-card.moment-card--text
+
+          .moment-card__reaction = emoji reaksi (😂 🤣 😭 😱 🤦 dll)
+          .moment-card__caption  = cerita/keterangan
+          .moment-card__who      = siapa yang terlibat
+
+          Masonry grid — kartu bebas berbeda ukuran foto
+        -->
+        <div class="moments__masonry">
+
+          <!-- MOMEN 01 — text/quote -->
+          <div class="moment-card moment-card--text reveal">
+            <div class="moment-card__body">
+              <span class="moment-card__big-emoji">😂</span>
+              <p class="moment-card__quote-text">
+                &ldquo;<!-- 📝 Cerita lucu atau momen tak terduga yang paling diingat --> Tuliskan cerita lucu atau momen menggelikan yang terjadi selama KKN di sini.&rdquo;
+              </p>
+              <p class="moment-card__quote-attr">— <!-- 📝 Siapa --> Nama / Semua</p>
+            </div>
+          </div>
+
+          <!-- MOMEN 02 — foto -->
+          <div class="moment-card reveal reveal-delay-1">
+            <div class="moment-card__photo" style="aspect-ratio: 3/4;">
+              <!-- <img src="assets/images/moments/momen-02.jpg" alt=""> -->
+              <div class="moment-card__photo-placeholder">😱</div>
+            </div>
+            <div class="moment-card__reaction">😂</div>
+            <div class="moment-card__body">
+              <p class="moment-card__caption"><!-- 📝 Keterangan momen --> Keterangan momen lucu atau tak terduga.</p>
+              <p class="moment-card__who"><!-- 📝 Siapa --> @Nama / Tim</p>
+            </div>
+          </div>
+
+          <!-- MOMEN 03 — foto persegi -->
+          <div class="moment-card reveal reveal-delay-2">
+            <div class="moment-card__photo" style="aspect-ratio: 1;">
+              <!-- <img src="assets/images/moments/momen-03.jpg" alt=""> -->
+              <div class="moment-card__photo-placeholder">🤦</div>
+            </div>
+            <div class="moment-card__reaction">🤣</div>
+            <div class="moment-card__body">
+              <p class="moment-card__caption">Keterangan momen.</p>
+              <p class="moment-card__who">@Nama / Tim</p>
+            </div>
+          </div>
+
+          <!-- MOMEN 04 — foto -->
+          <div class="moment-card reveal">
+            <div class="moment-card__photo" style="aspect-ratio: 4/3;">
+              <!-- <img src="assets/images/moments/momen-04.jpg" alt=""> -->
+              <div class="moment-card__photo-placeholder">😭</div>
+            </div>
+            <div class="moment-card__reaction">😭</div>
+            <div class="moment-card__body">
+              <p class="moment-card__caption">Keterangan momen.</p>
+              <p class="moment-card__who">@Nama / Tim</p>
+            </div>
+          </div>
+
+          <!-- MOMEN 05 — text/quote -->
+          <div class="moment-card moment-card--text reveal reveal-delay-1">
+            <div class="moment-card__body">
+              <span class="moment-card__big-emoji">🤦‍♂️</span>
+              <p class="moment-card__quote-text">&ldquo;Cerita lucu kedua yang pasti diingat lama.&rdquo;</p>
+              <p class="moment-card__quote-attr">— Nama</p>
+            </div>
+          </div>
+
+          <!-- MOMEN 06 — foto tinggi -->
+          <div class="moment-card reveal reveal-delay-2">
+            <div class="moment-card__photo" style="aspect-ratio: 2/3;">
+              <!-- <img src="assets/images/moments/momen-06.jpg" alt=""> -->
+              <div class="moment-card__photo-placeholder">🌧️</div>
+            </div>
+            <div class="moment-card__reaction">🌊</div>
+            <div class="moment-card__body">
+              <p class="moment-card__caption">Keterangan momen.</p>
+              <p class="moment-card__who">@Nama / Tim</p>
+            </div>
+          </div>
+
+          <!-- Tambahkan kartu lain sesuai momen yang terjadi -->
+
+        </div><!-- /moments__masonry -->
       </div>
-
-    </section><!-- /tim -->
-
+    </section><!-- /momen -->
 
 
-    <section id="refleksi" class="section-dark" style="min-height: 60vh; display: grid; place-items: center;">
-      <div style="text-align: center; padding: var(--space-16);">
-        <p class="section-eyebrow" style="justify-content: center; color: var(--accent-sage-light);">Bab III</p>
-        <h2 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--text-on-dark);">Refleksi</h2>
-        <p style="color: var(--text-on-dark-subtle); font-family: var(--font-ui); margin-top: var(--space-3);">Sprint 6</p>
+    <!-- ════════════════════════════════════════════
+         09 · REFLEKSI
+    ════════════════════════════════════════════ -->
+    <section id="refleksi" class="reflection" aria-labelledby="reflection-title">
+      <div class="reflection__inner">
+
+        <!-- Header -->
+        <div class="reflection__header reveal">
+          <p class="reflection__eyebrow">Bab Terakhir</p>
+          <h2 id="reflection-title" class="reflection__title">Refleksi</h2>
+        </div>
+
+        <!-- Pull Quote -->
+        <!-- 📝 Ganti dengan kutipan paling bermakna dari perjalanan ini -->
+        <div class="reflection__pull-quote reveal reveal-delay-1">
+          <span class="reflection__pull-quote-mark" aria-hidden="true">"</span>
+          <p class="reflection__pull-quote-text">
+            Empat puluh hari terasa singkat. Tapi cukup untuk mengubah cara kami melihat dunia &mdash; dan diri sendiri.
+          </p>
+        </div>
+
+        <!-- Quote grid per anggota -->
+        <!--
+          📝 PANDUAN EDIT REFLEKSI:
+          Satu .reflection-card per anggota tim.
+          .reflection-card__text = kutipan refleksi personal mereka (1-3 kalimat)
+          .reflection-card__avatar-initial = inisial nama
+          .reflection-card__name = nama panggilan
+          .reflection-card__role-label = peran unik di tim
+
+          Kalau sudah ada foto:
+          Di dalam .reflection-card__avatar, ganti initial dengan:
+          <img src="assets/images/team/01.jpg" alt="[Nama]" />
+        -->
+        <div class="reflection__grid">
+
+          <div class="reflection-card reveal">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;<!-- 📝 Refleksi anggota 1 --> Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">A</span></div>
+              <div>
+                <p class="reflection-card__name"><!-- Nama --> Nama Anggota</p>
+                <p class="reflection-card__role-label"><!-- Peran --> Peran di Tim</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-1">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">B</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-2">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">C</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">D</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-1">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">E</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-2">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">F</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">G</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-1">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">H</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-2">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">I</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">J</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+          <div class="reflection-card reveal reveal-delay-1">
+            <span class="reflection-card__quote-mark" aria-hidden="true">"</span>
+            <p class="reflection-card__text">&ldquo;Tuliskan refleksi jujur tentang apa yang dipelajari, dirasakan, atau berubah selama KKN.&rdquo;</p>
+            <div class="reflection-card__author">
+              <div class="reflection-card__avatar"><span class="reflection-card__avatar-initial">K</span></div>
+              <div><p class="reflection-card__name">Nama Anggota</p><p class="reflection-card__role-label">Peran di Tim</p></div>
+            </div>
+          </div>
+
+        </div><!-- /reflection__grid -->
+
+        <!-- Closing statement -->
+        <div class="reflection__closing reveal">
+          <p class="reflection__closing-text">
+            KKN bukan akhir dari segalanya. Ini adalah awal dari cara kami memandang
+            dunia yang <em>lebih kecil tapi jauh lebih nyata</em>.
+          </p>
+        </div>
+
       </div>
-    </section>
+    </section><!-- /refleksi -->
 
 
-  </main><!-- /main -->
+    <!-- ════════════════════════════════════════════
+         10 · SELAMAT TINGGAL
+    ════════════════════════════════════════════ -->
+    <section id="selamat-tinggal" class="farewell" aria-labelledby="farewell-title">
+      <div class="farewell__inner">
 
+        <!-- 📝 Ganti tanggal mulai dan selesai -->
+        <div class="farewell__date-range reveal">
+          [Tanggal Mulai]
+          <div class="farewell__date-range-divider"></div>
+          [Tanggal Selesai]
+        </div>
 
-  <!-- ══════════════════════════════════════════════════════
+        <h2 id="farewell-title" class="farewell__title reveal reveal-delay-1">
+          Selamat Tinggal,<br>Desa Kami.
+        </h2>
+
+        <p class="farewell__subtitle reveal reveal-delay-2">
+          <!-- 📝 Kalimat penutup yang personal dan jujur -->
+          Kami tidak tahu kapan akan kembali. Tapi kami tahu bahwa sebagian kecil dari diri kami
+          akan selalu tertinggal di sana.
+        </p>
+
+        <!-- Thank you note -->
+        <!-- 📝 Ganti nama desa atau biarkan "desa ini" -->
+        <div class="farewell__thankyou reveal reveal-delay-3">
+          <p class="farewell__thankyou-text">
+            Terima kasih, <strong>desa ini</strong> —<br><br>
+            Untuk setiap pagi yang sunyi, untuk warung kopi yang jadi ruang rapat,
+            untuk warga yang menerima kami dengan tangan terbuka,
+            untuk anak-anak yang mengajari kami bahwa kebahagiaan tidak butuh banyak hal.<br><br>
+            Kalian mengubah kami. Sungguh.
+          </p>
+        </div>
+
+        <!-- Signature -->
+        <div class="farewell__signature reveal reveal-delay-4">
+          <p class="farewell__signature-line">Tim JEJAK</p>
+          <p class="farewell__signature-sub">KKN 2026</p>
+        </div>
+
+        <!-- Back to top -->
+        <button class="farewell__back-top reveal reveal-delay-5"
+                onclick="window.scrollTo({top:0,behavior:'smooth'})"
+                aria-label="Kembali ke atas">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+          Mulai dari awal
+        </button>
+
+        <p class="farewell__credit reveal">Dibuat dengan ❤ dan banyak kenangan &mdash; JEJAK © 2026</p>
+
+      </div>
+    </section><!-- /selamat-tinggal -->
+
+    </main>
+    <!-- /main -->
+
+    <!-- ══════════════════════════════════════════════════════
        FOOTER — Minimal
   ══════════════════════════════════════════════════════ -->
-  <footer role="contentinfo" style="
-    background-color: var(--bg-dark);
-    padding: var(--space-12) var(--px-mobile);
-    text-align: center;
-  ">
-    <p style="
-      font-family: var(--font-ui);
-      font-size: var(--text-sm);
-      color: rgba(245, 240, 232, 0.35);
-      letter-spacing: var(--tracking-wide);
-    ">
-      Jejak &mdash; Jurnal Digital KKN &copy; 2026
-    </p>
-  </footer>
+    <footer
+      role="contentinfo"
+      style="
+        background-color: var(--bg-dark);
+        padding: var(--space-12) var(--px-mobile);
+        text-align: center;
+      "
+    >
+      <p
+        style="
+          font-family: var(--font-ui);
+          font-size: var(--text-sm);
+          color: rgba(245, 240, 232, 0.35);
+          letter-spacing: var(--tracking-wide);
+        "
+      >
+        Jejak &mdash; Jurnal Digital KKN &copy; 2026
+      </p>
+    </footer>
 
-
-  <!-- ══════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════
        BOTTOM NAV (mobile)
   ══════════════════════════════════════════════════════ -->
-  <nav
-    id="bottom-nav"
-    class="bottom-nav"
-    role="navigation"
-    aria-label="Navigasi bawah"
-  >
+    <nav
+      id="bottom-nav"
+      class="bottom-nav"
+      role="navigation"
+      aria-label="Navigasi bawah"
+    >
+      <button
+        class="bottom-nav__btn is-active"
+        data-section="hero"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        aria-label="Ke atas"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        </svg>
+        <span class="bottom-nav__label">Awal</span>
+        <span class="bottom-nav__dot"></span>
+      </button>
 
-    <button class="bottom-nav__btn is-active" data-section="hero" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Ke atas">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-      <span class="bottom-nav__label">Awal</span>
-      <span class="bottom-nav__dot"></span>
-    </button>
+      <button
+        class="bottom-nav__btn"
+        data-section="jurnal"
+        onclick="
+          document
+            .getElementById('jurnal')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+        aria-label="Jurnal"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+        </svg>
+        <span class="bottom-nav__label">Jurnal</span>
+        <span class="bottom-nav__dot"></span>
+      </button>
 
-    <button class="bottom-nav__btn" data-section="jurnal" onclick="document.getElementById('jurnal').scrollIntoView({behavior:'smooth'})" aria-label="Jurnal">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      <span class="bottom-nav__label">Jurnal</span>
-      <span class="bottom-nav__dot"></span>
-    </button>
+      <button
+        class="bottom-nav__btn"
+        data-section="tim"
+        onclick="
+          document.getElementById('tim').scrollIntoView({ behavior: 'smooth' })
+        "
+        aria-label="Tim Kami"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <span class="bottom-nav__label">Tim</span>
+        <span class="bottom-nav__dot"></span>
+      </button>
 
-    <button class="bottom-nav__btn" data-section="tim" onclick="document.getElementById('tim').scrollIntoView({behavior:'smooth'})" aria-label="Tim Kami">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      <span class="bottom-nav__label">Tim</span>
-      <span class="bottom-nav__dot"></span>
-    </button>
+      <button
+        class="bottom-nav__btn"
+        data-section="refleksi"
+        onclick="
+          document
+            .getElementById('refleksi')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+        aria-label="Refleksi"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+          />
+        </svg>
+        <span class="bottom-nav__label">Refleksi</span>
+        <span class="bottom-nav__dot"></span>
+      </button>
+    </nav>
+    <!-- /bottom-nav -->
 
-    <button class="bottom-nav__btn" data-section="refleksi" onclick="document.getElementById('refleksi').scrollIntoView({behavior:'smooth'})" aria-label="Refleksi">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      <span class="bottom-nav__label">Refleksi</span>
-      <span class="bottom-nav__dot"></span>
-    </button>
-
-  </nav><!-- /bottom-nav -->
-
-
-  <!-- ══════════════════════════════════════════════════════
+    <!-- ══════════════════════════════════════════════════════
        SCRIPTS — di bawah body untuk performa
   ══════════════════════════════════════════════════════ -->
-  <script src="js/hero.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/team.js" defer></script>
-
-</body>
+    <script src="js/hero.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/team.js" defer></script>
+    <script src="js/journal.js" defer></script>
+    <script src="js/program.js" defer></script>
+  </body>
 </html>
