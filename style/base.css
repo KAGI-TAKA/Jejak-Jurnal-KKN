@@ -231,3 +231,230 @@ section {
     transform: none;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   SECTION TRANSITIONS — gradient overlap antar terang/gelap
+   ═══════════════════════════════════════════════════════════ */
+
+/* Section yang DIMULAI dari section gelap (atas gelap → bawah terang) */
+.transition-from-dark {
+  position: relative;
+}
+.transition-from-dark::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--bg-primary)
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Section yang diakhiri menuju section gelap (terang → gelap di bawah) */
+.transition-to-dark {
+  position: relative;
+}
+.transition-to-dark::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    var(--bg-primary),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Section terang setelah gelap */
+.transition-from-light {
+  position: relative;
+}
+.transition-from-light::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #0F0D0B
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   TEXT CONTRAST IMPROVEMENTS — WCAG AA compliance
+   ═══════════════════════════════════════════════════════════ */
+
+/* Naikkan kontras teks sekunder — minimal 4.5:1 ratio */
+.text-secondary,
+.profile-card__detail,
+.journal-card__excerpt,
+.program-card__desc,
+.bento-body,
+.arrival__fact-text,
+.prolog__paragraph {
+  color: #5C5247; /* Lebih gelap dari --text-secondary default */
+}
+
+/* Di section gelap — naikkan opacity teks subtle */
+.team .team-panel__quote,
+.reflection-card__text,
+.farewell__thankyou-text {
+  color: rgba(245, 240, 232, 0.72); /* Dari 0.55 → 0.72 */
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CTA CONSISTENCY — semua clickable card punya indikator sama
+   ═══════════════════════════════════════════════════════════ */
+
+/* Semua kartu yang clickable */
+.journal-card,
+.program-card,
+.moment-card,
+.reflection-card,
+.profile-card,
+.bento-item {
+  cursor: pointer;
+}
+
+/* Universal CTA label */
+.cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--accent-sage-muted);
+  transition: gap var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.cta-label svg {
+  width: 12px; height: 12px;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+*:hover > .cta-label,
+*:hover .cta-label {
+  gap: var(--space-2);
+  color: var(--accent-sage);
+}
+
+*:hover .cta-label svg {
+  transform: translateX(3px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE IMPROVEMENTS — viewport < 480px
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 479px) {
+  /* Grid 3 kolom → 1 kolom */
+  .program__grid,
+  .village-profile,
+  .reflection__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Masonry → 1 kolom */
+  .moments__masonry {
+    columns: 1 !important;
+  }
+
+  /* Profile card wide tidak span */
+  .profile-card--wide {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Bento grid — 1 kolom */
+  .life-bento {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Padding section lebih kecil */
+  .arrival,
+  .village,
+  .journal,
+  .program,
+  .moments,
+  .reflection,
+  .farewell {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  /* Journal filter wrap */
+  .journal__filter {
+    justify-content: center;
+  }
+
+  /* Farewell title kecil */
+  .farewell__title {
+    font-size: clamp(var(--text-4xl), 12vw, var(--text-6xl));
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PRINT / PDF FRIENDLY
+   ═══════════════════════════════════════════════════════════ */
+@media print {
+  /* Sembunyikan navigasi dan elemen interaktif */
+  .nav,
+  .bottom-nav,
+  .back-to-top,
+  .intro-screen,
+  .progress-vine,
+  .journal__filter,
+  .journal__nav,
+  .program__filter,
+  .mood-btn,
+  .status-btn,
+  .farewell__back-top {
+    display: none !important;
+  }
+
+  /* Force light background */
+  body, .team, .reflection, .farewell {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Break sections to new pages */
+  section {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  section:first-of-type {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  /* Tampilkan semua teks */
+  .journal-card__excerpt,
+  .program-card__desc {
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+  }
+}
+

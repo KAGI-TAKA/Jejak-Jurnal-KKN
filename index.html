@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -6,41 +6,133 @@
     <meta name="theme-color" content="#1A1612" />
 
     <!-- SEO -->
-    <title>Jejak — Jurnal Digital KKN</title>
-    <meta
-      name="description"
-      content="Sebuah jurnal digital sinematik yang mengabadikan empat puluh hari perjalanan, kehidupan, dan kenangan selama program KKN."
-    />
+    <title>Jejak — Jurnal Digital KKN 2026</title>
+    <meta name="description" content="Sebuah jurnal digital sinematik yang mengabadikan perjalanan, kehidupan, dan kenangan 40 hari program KKN di sebuah desa di Jawa." />
+    <meta name="keywords" content="KKN, jurnal, kenangan, desa, mahasiswa, 2026" />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="Tim Jejak KKN 2026" />
 
-    <!-- Open Graph (untuk sharing di sosmed) -->
-    <meta property="og:title" content="Jejak — Jurnal Digital KKN" />
-    <meta
-      property="og:description"
-      content="Bukan laporan. Sebuah kenangan yang bisa dikunjungi kembali."
-    />
+    <!-- Open Graph — preview saat link dibagikan di WhatsApp/sosmed -->
+    <meta property="og:title" content="Jejak — Jurnal Digital KKN 2026" />
+    <meta property="og:description" content="Bukan laporan. Sebuah kenangan 40 hari yang bisa dikunjungi kembali kapan saja." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Jejak" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jejak — Jurnal Digital KKN 2026" />
+    <meta name="twitter:description" content="Bukan laporan. Sebuah kenangan 40 hari." />
+    <meta name="twitter:image" content="assets/images/og-image.jpg" />
 
     <!-- Preconnect Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- CSS — urutan penting -->
-    <link rel="stylesheet" href="style/tokens.css" />
-    <link rel="stylesheet" href="style/base.css" />
-    <link rel="stylesheet" href="style/nav.css" />
-    <link rel="stylesheet" href="style/hero.css" />
-    <link rel="stylesheet" href="style/intro.css" />
-    <link rel="stylesheet" href="style/prolog.css" />
-    <link rel="stylesheet" href="style/team.css" />
-    <link rel="stylesheet" href="style/arrival.css" />
-    <link rel="stylesheet" href="style/village.css" />
-    <link rel="stylesheet" href="style/journal.css" />
-  <link rel="stylesheet" href="style/program.css" />
-  <link rel="stylesheet" href="style/moments.css" />
-  <link rel="stylesheet" href="style/reflection.css" />
-  <link rel="stylesheet" href="style/farewell.css" />
+    <link rel="stylesheet" href="style/tokens.css?v=3" />
+    <link rel="stylesheet" href="style/base.css?v=3" />
+    <link rel="stylesheet" href="style/nav.css?v=3" />
+    <link rel="stylesheet" href="style/hero.css?v=3" />
+    <link rel="stylesheet" href="style/intro.css?v=3" />
+    <link rel="stylesheet" href="style/prolog.css?v=3" />
+    <link rel="stylesheet" href="style/team.css?v=3" />
+    <link rel="stylesheet" href="style/arrival.css?v=3" />
+    <link rel="stylesheet" href="style/village.css?v=3" />
+    <link rel="stylesheet" href="style/journal.css?v=3" />
+    <link rel="stylesheet" href="style/program.css?v=3" />
+    <link rel="stylesheet" href="style/moments.css?v=3" />
+    <link rel="stylesheet" href="style/reflection.css?v=3" />
+    <link rel="stylesheet" href="style/farewell.css?v=3" />
+    <link rel="stylesheet" href="style/overflow-fix.css?v=3" />
+
+    <!-- INLINE OVERRIDE: fix overflow dengan pendekatan yang benar -->
+    <style>
+      /* ═══════════════════════════════════════════════════
+         REFLEKSI: masalah = grid rows tingginya berbeda-beda
+         Fix = paksa semua baris sama tinggi + clamp konten
+         ═══════════════════════════════════════════════════ */
+      .reflection__grid {
+        /* Semua baris dipaksa sama tinggi = 220px */
+        grid-auto-rows: 220px !important;
+        align-items: stretch !important;
+      }
+      .reflection-card {
+        /* Kartu mengisi penuh baris grid */
+        height: 100% !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+      }
+      .reflection-card__quote-mark {
+        flex-shrink: 0 !important;
+        font-size: 24px !important;
+        line-height: 1 !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+      }
+      .reflection-card__text {
+        /* Isi sisa ruang tapi tidak overflow */
+        flex: 1 1 0 !important;
+        min-height: 0 !important; /* KRITIS: izinkan flex child untuk shrink */
+        overflow: hidden !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        word-break: break-word !important;
+        font-size: 0.875rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 12px !important;
+      }
+      .reflection-card__author {
+        flex-shrink: 0 !important;
+        margin-top: auto !important;
+      }
+
+      /* ═══════════════════════════════════════════════════
+         MOMEN LUCU: masalah = teks melewati card boundary
+         Fix = overflow hidden + word wrap ketat
+         ═══════════════════════════════════════════════════ */
+      .moment-card {
+        overflow: hidden !important;
+      }
+      .moment-card__body {
+        overflow: hidden !important;
+        word-break: break-word !important;
+      }
+      .moment-card__quote-text {
+        overflow: hidden !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5 !important;
+        -webkit-box-orient: vertical !important;
+        word-break: break-word !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+      }
+      .moment-card__caption {
+        overflow: hidden !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3 !important;
+        -webkit-box-orient: vertical !important;
+        word-break: break-word !important;
+        font-size: 0.875rem !important;
+      }
+
+      /* ═══ JOURNAL ═══ */
+      .journal__scroll-wrapper { overflow: hidden !important; }
+      .journal__track { overflow-y: hidden !important; }
+      .journal-card { overflow: hidden !important; max-width: 280px !important; }
+
+      /* ═══ NAVBAR ═══ */
+      .nav:not(.is-scrolled):not(.is-dark) {
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -77,60 +169,22 @@
     >
       <div class="nav__inner">
         <!-- Logo -->
-        <a href="#hero" class="nav__logo" aria-label="Kembali ke awal">Jejak</a>
+        <a href="#" class="nav__logo" aria-label="Kembali ke awal — Jejak">Jejak</a>
 
         <!-- Desktop Links -->
         <ul class="nav__links" role="list">
-          <li>
-            <a href="#kedatangan" class="nav__link" data-section="kedatangan">
-              Kedatangan
-            </a>
-          </li>
-          <li>
-            <a href="#kehidupan" class="nav__link" data-section="kehidupan">
-              Kehidupan
-            </a>
-          </li>
-          <li>
-            <a href="#jurnal" class="nav__link" data-section="jurnal">
-              Jurnal
-            </a>
-          </li>
-          <li>
-            <a href="#tim" class="nav__link" data-section="tim"> Tim Kami </a>
-          </li>
-          <li>
-            <a href="#refleksi" class="nav__link" data-section="refleksi">
-              Refleksi
-            </a>
-          </li>
+          <li><a href="#kedatangan"  class="nav__link" data-section="kedatangan">Kedatangan</a></li>
+          <li><a href="#kehidupan"   class="nav__link" data-section="kehidupan">Kehidupan</a></li>
+          <li><a href="#jurnal"      class="nav__link" data-section="jurnal">Jurnal</a></li>
+          <li><a href="#tim"         class="nav__link" data-section="tim">Tim</a></li>
+          <li><a href="#program"     class="nav__link" data-section="program">Program</a></li>
+          <li><a href="#momen"       class="nav__link" data-section="momen">Momen</a></li>
+          <li><a href="#refleksi"    class="nav__link" data-section="refleksi">Refleksi</a></li>
+          <li><a href="#selamat-tinggal" class="nav__link" data-section="selamat-tinggal">Penutup</a></li>
         </ul>
 
         <!-- Right side -->
-        <div style="display: flex; align-items: center; gap: var(--space-3)">
-          <!-- Back to top -->
-          <button
-            id="nav-back-top"
-            class="nav__back-top"
-            aria-label="Kembali ke atas"
-            title="Kembali ke atas"
-          >
-            <!-- Arrow up icon (SVG inline) -->
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M12 19V5M5 12l7-7 7 7" />
-            </svg>
-          </button>
-
+        <div style="display:flex;align-items:center;gap:var(--space-3)">
           <!-- Hamburger (mobile) -->
           <button
             id="nav-hamburger"
@@ -145,8 +199,7 @@
           </button>
         </div>
       </div>
-    </nav>
-    <!-- /nav -->
+    </nav><!-- /nav -->
 
     <!-- Mobile Menu Drawer -->
     <div
@@ -154,15 +207,32 @@
       class="nav__mobile-menu"
       role="dialog"
       aria-modal="true"
-      aria-label="Menu navigasi"
+      aria-label="Menu navigasi mobile"
       aria-hidden="true"
     >
-      <a href="#kedatangan" class="nav__mobile-link">Kedatangan</a>
-      <a href="#kehidupan" class="nav__mobile-link">Kehidupan</a>
-      <a href="#jurnal" class="nav__mobile-link">Jurnal</a>
-      <a href="#tim" class="nav__mobile-link">Tim Kami</a>
-      <a href="#refleksi" class="nav__mobile-link">Refleksi</a>
+      <button class="nav__mobile-close" id="nav-mobile-close" aria-label="Tutup menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <a href="#"              class="nav__mobile-link">Beranda</a>
+      <a href="#kedatangan"   class="nav__mobile-link">Kedatangan</a>
+      <a href="#kehidupan"    class="nav__mobile-link">Kehidupan Desa</a>
+      <a href="#jurnal"       class="nav__mobile-link">Jurnal Harian</a>
+      <a href="#tim"          class="nav__mobile-link">Tim Kami</a>
+      <a href="#program"      class="nav__mobile-link">Program Kerja</a>
+      <a href="#momen"        class="nav__mobile-link">Momen Lucu</a>
+      <a href="#refleksi"     class="nav__mobile-link">Refleksi</a>
+      <a href="#selamat-tinggal" class="nav__mobile-link">Penutup</a>
     </div>
+
+    <!-- Floating Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      aria-label="Kembali ke atas"
+      title="Kembali ke atas"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </button>
 
     <!-- ══════════════════════════════════════════════════════
        READING PROGRESS VINE (desktop only)
@@ -726,7 +796,7 @@
               Jurnal Harian
             </h2>
             <p class="journal__subtitle reveal reveal-delay-2">
-              Geser untuk menjelajahi hari per hari.
+              Geser untuk menjelajahi hari per hari. Filter berdasarkan suasana atau lompat per minggu.
             </p>
           </div>
           <div
@@ -734,62 +804,73 @@
             role="group"
             aria-label="Filter berdasarkan suasana"
           >
-            <button class="mood-btn is-active" data-mood="all">Semua</button>
-            <button class="mood-btn" data-mood="seru">
-              <span class="mood-btn__emoji">😊</span> Seru
+            <button class="mood-btn is-active" data-mood="all" aria-pressed="true">Semua</button>
+            <button class="mood-btn" data-mood="seru" aria-pressed="false">
+              <span class="mood-btn__emoji" aria-hidden="true">☀️</span> Seru
             </button>
-            <button class="mood-btn" data-mood="lucu">
-              <span class="mood-btn__emoji">😂</span> Lucu
+            <button class="mood-btn" data-mood="lucu" aria-pressed="false">
+              <span class="mood-btn__emoji" aria-hidden="true">😂</span> Lucu
             </button>
-            <button class="mood-btn" data-mood="capek">
-              <span class="mood-btn__emoji">😴</span> Capek
+            <button class="mood-btn" data-mood="capek" aria-pressed="false">
+              <span class="mood-btn__emoji" aria-hidden="true">😴</span> Capek
             </button>
-            <button class="mood-btn" data-mood="haru">
-              <span class="mood-btn__emoji">😢</span> Haru
+            <button class="mood-btn" data-mood="haru" aria-pressed="false">
+              <span class="mood-btn__emoji" aria-hidden="true">💙</span> Haru
             </button>
-            <button class="mood-btn" data-mood="hujan">
-              <span class="mood-btn__emoji">🌧️</span> Hujan
+            <button class="mood-btn" data-mood="hujan" aria-pressed="false">
+              <span class="mood-btn__emoji" aria-hidden="true">🌧️</span> Hujan
             </button>
           </div>
         </div>
+
+        <!-- Week Picker — navigasi cepat lompat per minggu -->
+        <!-- 📝 Sesuaikan range tanggal setelah tahu tanggal mulai KKN -->
+        <div class="journal__week-picker reveal" role="group" aria-label="Pilih minggu">
+          <span class="journal__week-label">Minggu</span>
+          <button class="week-btn is-active" data-week="1" aria-label="Minggu 1">
+            W1
+            <span class="week-btn__range">Hari 1–7</span>
+          </button>
+          <button class="week-btn" data-week="2" aria-label="Minggu 2">
+            W2
+            <span class="week-btn__range">Hari 8–14</span>
+          </button>
+          <button class="week-btn" data-week="3" aria-label="Minggu 3">
+            W3
+            <span class="week-btn__range">Hari 15–21</span>
+          </button>
+          <button class="week-btn" data-week="4" aria-label="Minggu 4">
+            W4
+            <span class="week-btn__range">Hari 22–28</span>
+          </button>
+          <button class="week-btn" data-week="5" aria-label="Minggu 5">
+            W5
+            <span class="week-btn__range">Hari 29–35</span>
+          </button>
+          <button class="week-btn" data-week="6" aria-label="Minggu 6">
+            W6
+            <span class="week-btn__range">Hari 36–42</span>
+          </button>
+          <button class="week-btn" data-week="7" aria-label="Minggu 7">
+            W7
+            <span class="week-btn__range">Hari 43–50</span>
+          </button>
+        </div>
+
         <div class="journal__nav">
           <button
             id="journal-prev"
             class="journal__nav-btn"
-            aria-label="Geser ke kiri"
+            aria-label="Geser ke kiri — hari sebelumnya"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
           <button
             id="journal-next"
             class="journal__nav-btn"
-            aria-label="Geser ke kanan"
+            aria-label="Geser ke kanan — hari selanjutnya"
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
           </button>
         </div>
         <!-- 📝 PANDUAN: Duplikat blok journal-card untuk setiap hari baru -->
@@ -799,15 +880,18 @@
               class="journal-card"
               role="listitem"
               data-mood="seru"
+              data-day="1"
               tabindex="0"
+              aria-label="Jurnal Hari 1: Hari Pertama di Desa"
             >
               <div class="journal-card__photo">
-                <div class="journal-card__photo-placeholder">🌞</div>
+                <!-- <img src="assets/images/journal/hari-01.jpg" alt="Momen hari pertama tiba di desa, suasana posko dan perkenalan dengan warga"> -->
+                <div class="journal-card__photo-placeholder" aria-hidden="true">🌞</div>
                 <div class="journal-card__day-badge">
                   <div class="journal-card__day-num">01</div>
                   <div class="journal-card__day-label">Hari</div>
                 </div>
-                <div class="journal-card__mood" aria-label="Mood: Seru">😊</div>
+                <div class="journal-card__mood" aria-label="Mood hari ini: Seru">☀️</div>
               </div>
               <div class="journal-card__body">
                 <p class="journal-card__date">[Tanggal, Hari]</p>
@@ -818,27 +902,20 @@
                 </p>
               </div>
               <div class="journal-card__footer">
-                <span class="journal-card__read-more"
-                  >Baca selengkapnya
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" /></svg
-                ></span>
+                <span class="journal-card__read-more">Baca selengkapnya <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                <div class="journal-card__share">
+                  <button class="share-btn" data-share="whatsapp" aria-label="Bagikan via WhatsApp" title="Bagikan via WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  </button>
+                  <button class="share-btn" data-share="copy" aria-label="Salin link" title="Salin link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                  </button>
+                </div>
               </div>
             </article>
 
             <article
-              class="journal-card"
-              role="listitem"
-              data-mood="lucu"
-              tabindex="0"
+              class="journal-card" role="listitem" data-mood="lucu" data-day="3" tabindex="0" aria-label="Jurnal Hari 3"
             >
               <div class="journal-card__photo">
                 <div class="journal-card__photo-placeholder">🌟</div>
@@ -873,10 +950,7 @@
             </article>
 
             <article
-              class="journal-card"
-              role="listitem"
-              data-mood="capek"
-              tabindex="0"
+              class="journal-card" role="listitem" data-mood="capek" data-day="7" tabindex="0" aria-label="Jurnal Hari 7"
             >
               <div class="journal-card__photo">
                 <div class="journal-card__photo-placeholder">🌙</div>
@@ -913,10 +987,7 @@
             </article>
 
             <article
-              class="journal-card"
-              role="listitem"
-              data-mood="haru"
-              tabindex="0"
+              class="journal-card" role="listitem" data-mood="haru" data-day="14" tabindex="0" aria-label="Jurnal Hari 14"
             >
               <div class="journal-card__photo">
                 <div class="journal-card__photo-placeholder">🌈</div>

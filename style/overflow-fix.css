@@ -1,0 +1,105 @@
+/* ============================================================
+   OVERFLOW-FIX.CSS — Hard override untuk fix card overflow
+   Dimuat TERAKHIR agar override semua CSS sebelumnya
+   ============================================================ */
+
+/* ── MOMEN LUCU — paksa overflow tersembunyi di semua kartu ── */
+.moment-card {
+  overflow: hidden !important;
+  contain: layout style;  /* Browser isolation lebih kuat */
+}
+
+.moment-card__body {
+  overflow: hidden !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+.moment-card__quote-text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  /* Kecilkan font agar muat */
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem) !important;
+  line-height: 1.6 !important;
+}
+
+.moment-card__caption {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  font-size: 0.875rem !important;
+}
+
+.moment-card__who {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* ── REFLEKSI — fix tanda kutip keluar kartu ─────────────── */
+.reflection-card {
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  contain: layout style;
+  /* Tambah padding top agar tanda kutip tidak kepotong border */
+  padding-top: var(--space-6) !important;
+}
+
+.reflection-card__quote-mark {
+  flex-shrink: 0 !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  margin-bottom: var(--space-2) !important;
+  /* Pastikan tidak overflow */
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.reflection-card__text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  flex: 1 !important;
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem) !important;
+  line-height: 1.65 !important;
+  margin-bottom: var(--space-4) !important;
+}
+
+.reflection-card__author {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
+}
+
+/* ── JOURNAL TRACK — fix posisi dan overflow ─────────────── */
+.journal__scroll-wrapper {
+  overflow: hidden !important;
+}
+
+.journal__track {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+.journal-card {
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  width: clamp(240px, 75vw, 270px) !important;
+}
+
+@media (min-width: 640px) {
+  .journal-card { width: 268px !important; }
+}
+
+@media (min-width: 1024px) {
+  .journal-card { width: 280px !important; }
+}

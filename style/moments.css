@@ -14,8 +14,16 @@
   margin: 0 auto;
   padding: 0 var(--px-mobile);
 }
-@media (min-width: 768px)  { .moments__inner { padding: 0 var(--px-tablet); } }
-@media (min-width: 1280px) { .moments__inner { padding: 0 var(--px-desktop); } }
+@media (min-width: 768px) {
+  .moments__inner {
+    padding: 0 var(--px-tablet);
+  }
+}
+@media (min-width: 1280px) {
+  .moments__inner {
+    padding: 0 var(--px-desktop);
+  }
+}
 
 /* ── HEADER ───────────────────────────────────────────────── */
 .moments__header {
@@ -26,14 +34,17 @@
 .moments__title {
   font-family: var(--font-display);
   font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
-  font-weight: 700; color: var(--text-primary);
+  font-weight: 700;
+  color: var(--text-primary);
   line-height: var(--leading-tight);
 }
 
 .moments__subtitle {
-  font-family: var(--font-accent); font-style: italic;
+  font-family: var(--font-accent);
+  font-style: italic;
   font-size: clamp(var(--text-base), 2vw, var(--text-xl));
-  color: var(--text-subtle); margin-top: var(--space-3);
+  color: var(--text-subtle);
+  margin-top: var(--space-3);
 }
 
 /* ── TICKER — scrolling text strip ───────────────────────── */
@@ -46,29 +57,44 @@
 }
 
 .moments__ticker-inner {
-  display: flex; gap: var(--space-8);
+  display: flex;
+  gap: var(--space-8);
   animation: tickerScroll 30s linear infinite;
   white-space: nowrap;
 }
 
-.moments__ticker-inner:hover { animation-play-state: paused; }
+.moments__ticker-inner:hover {
+  animation-play-state: paused;
+}
 
 .moments__ticker-item {
   font-family: var(--font-ui);
-  font-size: var(--text-sm); font-weight: 500;
-  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
   color: var(--text-subtle);
-  display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
 }
 
 .moments__ticker-dot {
-  width: 4px; height: 4px; border-radius: 50%;
-  background-color: var(--accent-sage); flex-shrink: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--accent-sage);
+  flex-shrink: 0;
 }
 
 @keyframes tickerScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* ── MOMENTS MASONRY ──────────────────────────────────────── */
@@ -77,8 +103,16 @@
   column-gap: var(--space-4);
 }
 
-@media (min-width: 640px)  { .moments__masonry { columns: 2; } }
-@media (min-width: 1024px) { .moments__masonry { columns: 3; } }
+@media (min-width: 640px) {
+  .moments__masonry {
+    columns: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .moments__masonry {
+    columns: 3;
+  }
+}
 
 /* ── MOMENT CARD ──────────────────────────────────────────── */
 .moment-card {
@@ -90,8 +124,11 @@
   border: 1px solid var(--border-light);
   cursor: default;
   position: relative;
-  transition: transform var(--duration-normal) var(--ease-out),
-              box-shadow var(--duration-normal) var(--ease-out);
+  overflow: hidden; /* Cegah teks keluar kartu */
+  isolation: isolate;
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .moment-card:hover {
@@ -101,32 +138,51 @@
 
 /* Foto */
 .moment-card__photo {
-  width: 100%; overflow: hidden;
-  background: linear-gradient(135deg, var(--bg-secondary), var(--border-medium));
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary),
+    var(--border-medium)
+  );
 }
 
 .moment-card__photo img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   transition: transform var(--duration-slow) var(--ease-out);
 }
-.moment-card:hover .moment-card__photo img { transform: scale(1.04); }
+.moment-card:hover .moment-card__photo img {
+  transform: scale(1.04);
+}
 
 .moment-card__photo-placeholder {
-  display: flex; align-items: center; justify-content: center;
-  font-size: var(--text-5xl); padding: var(--space-12) 0;
-  opacity: 0.25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-5xl);
+  padding: var(--space-12) 0;
+  /* Dinaikkan dari 0.25 agar placeholder terlihat jelas sebagai penanda,
+     bukan seperti kotak kosong/rusak */
+  opacity: 0.5;
 }
 
 /* Reaction emoji — pojok kanan atas */
 .moment-card__reaction {
   position: absolute;
-  top: var(--space-3); right: var(--space-3);
+  top: var(--space-3);
+  right: var(--space-3);
   font-size: var(--text-2xl);
-  background: rgba(245,240,232,0.85);
+  background: rgba(245, 240, 232, 0.85);
   backdrop-filter: blur(6px);
   border-radius: var(--radius-full);
-  width: 40px; height: 40px;
-  display: flex; align-items: center; justify-content: center;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform var(--duration-normal) var(--ease-out);
 }
 
@@ -135,22 +191,40 @@
 }
 
 /* Body */
-.moment-card__body { padding: var(--space-5); }
+.moment-card__body {
+  padding: var(--space-5);
+  /* Pastikan teks tidak melampaui kartu */
+  overflow: hidden;
+  min-width: 0; /* Penting untuk flexbox overflow */
+}
 
 .moment-card__caption {
   font-family: var(--font-body);
-  font-size: var(--text-base); color: var(--text-primary);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
   line-height: var(--leading-relaxed);
-  font-weight: 500; margin-bottom: var(--space-2);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+  /* Clamp 3 baris */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .moment-card__who {
   font-family: var(--font-ui);
-  font-size: var(--text-xs); color: var(--text-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
   letter-spacing: var(--tracking-wide);
+  /* Potong jika terlalu panjang */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ── CARD VARIASI: quote/text only (tanpa foto) ──────────── */
+/* ── CARD VARIASI: quote/text only (tanpa foto) ────────── */
 .moment-card--text {
   background: linear-gradient(135deg, var(--bg-surface), var(--bg-secondary));
 }
@@ -161,18 +235,43 @@
 
 .moment-card__big-emoji {
   font-size: var(--text-5xl);
-  display: block; margin-bottom: var(--space-4); line-height: 1;
+  display: block;
+  margin-bottom: var(--space-4);
+  line-height: 1;
+  /* Emoji tidak boleh overflow */
+  overflow: hidden;
+  /* Optical alignment: bounding box emoji punya ruang kosong di kiri,
+     geser sedikit agar sejajar dengan teks di bawahnya */
+  margin-left: -0.05em;
 }
 
 .moment-card__quote-text {
-  font-family: var(--font-accent); font-style: italic;
-  font-size: clamp(var(--text-lg), 2vw, var(--text-2xl));
+  font-family: var(--font-accent);
+  font-style: italic;
+  /* Font size lebih kecil agar muat dalam kartu */
+  font-size: clamp(var(--text-base), 1.5vw, var(--text-xl));
   color: var(--text-primary);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-4);
+  /* Clamp 5 baris agar tidak overflow kartu */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  /* Hanging punctuation: tanda kutip menggantung ke luar (Safari native) */
+  hanging-punctuation: first;
+  /* Fallback manual untuk browser yang belum support hanging-punctuation */
+  text-indent: -0.4em;
+  padding-left: 0.4em;
 }
 
 .moment-card__quote-attr {
-  font-family: var(--font-ui); font-size: var(--text-xs);
-  color: var(--text-subtle); letter-spacing: var(--tracking-wide);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--text-subtle);
+  letter-spacing: var(--tracking-wide);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

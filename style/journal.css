@@ -100,7 +100,8 @@
 /* ── JOURNAL SCROLL CONTAINER ────────────────────────────── */
 .journal__scroll-wrapper {
   position: relative;
-  /* Fade di tepi kanan */
+  /* Clip kartu yang melewati batas — tapi biarkan fade kanan tetap terlihat */
+  overflow: hidden;
 }
 
 .journal__scroll-wrapper::after {
@@ -115,22 +116,44 @@
   z-index: 2;
 }
 
+/* Juga tambahkan fade di kiri */
+.journal__scroll-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(to left, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 2;
+}
+
 .journal__track {
   display: flex;
   gap: var(--space-5);
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;  /* Cegah kartu keluar atas/bawah */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: var(--space-4) var(--px-mobile) var(--space-8);
+  /* Padding kiri = section padding agar kartu mulai di garis yang benar */
+  padding: var(--space-6) var(--px-mobile) var(--space-10);
+  /* Pastikan scroll tidak melampaui batas kiri */
+  scroll-padding-left: var(--px-mobile);
 }
 
 @media (min-width: 768px) {
-  .journal__track { padding: var(--space-4) var(--px-tablet) var(--space-8); }
+  .journal__track {
+    padding: var(--space-6) var(--px-tablet) var(--space-10);
+    scroll-padding-left: var(--px-tablet);
+  }
 }
 @media (min-width: 1280px) {
-  .journal__track { padding: var(--space-4) var(--px-desktop) var(--space-8); }
+  .journal__track {
+    padding: var(--space-6) var(--px-desktop) var(--space-10);
+    scroll-padding-left: var(--px-desktop);
+  }
 }
 
 .journal__track::-webkit-scrollbar {
@@ -140,20 +163,30 @@
 /* ── JOURNAL CARD ─────────────────────────────────────────── */
 .journal-card {
   flex: none;
-  width: 280px;
+  /* Lebar responsif: 85vw di mobile, fixed 260px di tablet, 280px di desktop */
+  width: clamp(240px, 80vw, 260px);
   scroll-snap-align: start;
   border-radius: var(--radius-xl);
-  overflow: hidden;
+  overflow: hidden;  /* KRITIS: cegah semua konten keluar kartu */
   background-color: var(--bg-surface);
   border: 1px solid var(--border-light);
   cursor: pointer;
   position: relative;
+  /* Isolasi stacking context */
+  isolation: isolate;
 
   transition:
     transform    var(--duration-normal) var(--ease-out),
     box-shadow   var(--duration-normal) var(--ease-out),
     border-color var(--duration-normal) var(--ease-out),
     opacity      300ms var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .journal-card { width: 270px; }
+}
+@media (min-width: 1024px) {
+  .journal-card { width: 280px; }
 }
 
 .journal-card:hover {
@@ -404,3 +437,112 @@
   font-style: italic;
   font-size: var(--text-lg);
 }
+
+
+/* ══════════════════════════════════════════════════════════
+   WEEK PICKER — navigasi cepat untuk 50 hari (7 minggu)
+   ══════════════════════════════════════════════════════════ */
+.journal__week-picker {
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-6);
+  padding: 0 var(--px-mobile);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px)  { .journal__week-picker { padding: 0 var(--px-tablet); } }
+@media (min-width: 1280px) { .journal__week-picker { padding: 0 var(--px-desktop); } }
+
+.journal__week-label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-right: var(--space-2);
+  flex-shrink: 0;
+}
+
+.week-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  user-select: none;
+}
+
+.week-btn:hover {
+  background: var(--border-light);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.week-btn.is-active {
+  background: var(--accent-sage);
+  border-color: var(--accent-sage);
+  color: white;
+  box-shadow: 0 4px 12px rgba(107,143,113,0.3);
+}
+
+/* Range display */
+.week-btn__range {
+  display: none;
+  font-size: 9px;
+  font-weight: 400;
+  color: inherit;
+  opacity: 0.7;
+}
+
+@media (min-width: 640px) {
+  .week-btn {
+    width: auto;
+    padding: var(--space-2) var(--space-3);
+    flex-direction: column;
+    height: auto;
+    gap: 2px;
+  }
+  .week-btn__range { display: block; }
+}
+
+/* ── SHARE BUTTONS (per journal card) ──────────────────────── */
+.journal-card__share {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.share-btn {
+  width: 28px; height: 28px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-light);
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  background: transparent;
+}
+
+.share-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.share-btn svg { width: 13px; height: 13px; }
+
